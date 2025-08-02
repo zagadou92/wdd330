@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convertisseur | CryptoMentor</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <header><h1>Convertisseur</h1></header>
+  <main>
+    <p>Convertis les prix de crypto en FCFA, USD ou EUR :</p>
+    <input type="number" id="amount" placeholder="Montant" />
+    <div class="converter-selectors">
+  <label for="from-currency">Convertir depuis :</label>
+  <select id="from-currency" name="from-currency" required>
+    <option value="">-- Choisissez une crypto --</option>
+    <option value="btc">Bitcoin (BTC)</option>
+    <option value="eth">Ethereum (ETH)</option>
+    <option value="bnb">BNB</option>
+    <option value="usdt">Tether (USDT)</option>
+  </select>
+
+  <label for="to-currency">Vers la devise :</label>
+  <select id="to-currency" name="to-currency" required>
+    <option value="">-- Choisissez une devise --</option>
+    <option value="xof">Franc CFA (XOF)</option>
+    <option value="usd">Dollar US (USD)</option>
+    <option value="eur">Euro (EUR)</option>
+  </select>
+   <button id="convert-btn">Convertir</button>
+
+      <p id="result">Résultat : </p>
+</div>
+
+    
+    <script type="module" src="js/convert.js"></script>
+  </main>
+  <footer><p>&copy; 2025 CryptoMentor</p></footer>
+</body>
+</html>

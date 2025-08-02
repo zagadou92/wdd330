@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoMentor</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>💰 CryptoMentor</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="convert.html">Convertisseur</a></li>
+          <li><a href="glossary.html">Glossaire</a></li>
+          <li><a href="news.html">Actualités</a></li>
+          <li><a href="guide.html">Débuter</a></li>
+        </ul>
+        <div class="controls">
+          <input type="text" id="search" placeholder="Rechercher une crypto…" />
+          <label for="currency-selector">Devise&nbsp;:</label>
+          <select id="currency-selector" name="currency">
+            <option value="usd">USD – Dollar</option>
+            <option value="eur">EUR – Euro</option>
+            <option value="xof">FCFA – Franc CFA</option>
+          </select>
+          <button id="theme-toggle">🌓 Mode</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Bienvenue sur CryptoMentor</h2>
+      <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases&nbsp;!</p>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 CryptoMentor | Suivez-nous sur <a href="#">Twitter</a></p>
+    </footer>
+
+    <script type="module" src="js/convert.js"></script>
+  </body>
+</html>
