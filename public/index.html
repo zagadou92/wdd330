@@ -1,45 +1,135 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoMentor</title>
-    <link rel="stylesheet" href="styles/styles.css" /> 
-  </head>
-  <body>
-    <header>
-      <h1>💰CryptoMentor</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="about.html">À propos</a></li>
-          <li><a href="convert.html">Convertisseur</a></li>
-          <li><a href="glossary.html">Glossaire</a></li>
-          <li><a href="news.html">Actualités</a></li>
-          <li><a href="guide.html">Débuter</a></li>
-        </ul>
-        <div class="controls">
-          <input type="text" id="search" placeholder="Rechercher une crypto…" />
-          <label for="currency-selector">Devise&nbsp;:</label>
-          <select id="currency-selector" name="currency">
-            <option value="usd">USD – Dollar</option>
-            <option value="eur">EUR – Euro</option>
-            <option value="xof">FCFA – Franc CFA</option>
-          </select>
-          <button id="theme-toggle">🌓 Mode</button>
-        </div>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryptoMentor – Suivez les cryptomonnaies en temps réel</title>
+  <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
+  
 
-    <main>
-      <h2>Bienvenue sur CryptoMentor</h2>
-      <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases&nbsp;!</p>
-    </main>
 
-    <footer>
-      <p>&copy; 2025 CryptoMentor | Suivez-nous sur <a href="#">Twitter</a></p>
-    </footer>
+<link rel="stylesheet" href="styles/styles.css" />
 
-    <script type="module" src="js/convert.js"></script>
-  </body>
+</head>
+<body>
+
+<header>
+  <div class="container header-container">
+    <a href="index.html" class="logo" aria-label="Accueil CryptoMentor">
+      <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
+      <span>CryptoMentor</span>
+    </a>
+
+    <button id="burger-btn" aria-label="Menu navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav id="main-nav" role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="convert.html">Convertisseur</a></li>
+        <li><a href="glossary.html">Glossaire</a></li>
+        <li><a href="news.html">Actualités</a></li>
+        <li><a href="guide.html">Débuter</a></li>
+      </ul>
+
+      <form class="search-form" role="search" aria-label="Recherche crypto">
+        <input
+          type="search"
+          id="search-input"
+          name="search"
+          placeholder="Rechercher une crypto…"
+          aria-label="Rechercher une cryptomonnaie"
+          autocomplete="off"
+        />
+        <button type="submit" aria-label="Lancer la recherche"><i class="fas fa-search"></i></button>
+      </form>
+
+      <label for="currency-selector" class="currency-label">Devise :</label>
+      <select id="currency-selector" name="currency" aria-label="Sélection de la devise">
+        <option value="usd">USD – Dollar</option>
+        <option value="eur">EUR – Euro</option>
+        <option value="xof">FCFA – Franc CFA</option>
+      </select>
+
+      <button id="theme-toggle" aria-label="Changer le mode clair/sombre" title="Changer le mode clair/sombre">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container" aria-label="Présentation CryptoMentor">
+    <h1>Bienvenue sur CryptoMentor</h1>
+    <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases en toute simplicité.</p>
+  </section>
+
+  <section class="features container" aria-label="Fonctionnalités principales">
+    <article>
+      <i class="fas fa-chart-line fa-3x"></i>
+      <h2>Marché en temps réel</h2>
+      <p>Suivez l'évolution des prix des cryptos en direct, avec des graphiques clairs et précis.</p>
+    </article>
+
+    <article>
+      <i class="fas fa-book fa-3x"></i>
+      <h2>Glossaire complet</h2>
+      <p>Comprenez tous les termes essentiels grâce à notre glossaire simple et accessible.</p>
+    </article>
+
+    <article>
+      <i class="fas fa-lightbulb fa-3x"></i>
+      <h2>Conseils et guides</h2>
+      <p>Débutants ou avancés, trouvez des astuces et tutoriels adaptés à votre niveau.</p>
+    </article>
+  </section>
+</main>
+
+<!-- Boutons Inscription et Connexion en bas -->
+<div class="bottom-auth-buttons container" role="region" aria-label="Inscription et Connexion">
+  <a href="inscription.html" class="btn-highlight" role="button" tabindex="0">Inscription</a>
+  <a href="connexion.html" class="btn-small" role="button" tabindex="0">Connexion</a>
+</div >
+
+<footer role="contentinfo" class="site-footer">
+  <div class="container footer-inner">
+    <!-- Section Copyright -->
+    <p class="footer-copy" aria-label="Droits d'auteur">
+      &copy; 2025 CryptoMentor. Tous droits réservés.
+    </p>
+
+    <!-- Liens utiles -->
+    <nav aria-label="Liens de pied de page" class="footer-nav">
+      <ul>
+        <li><a href="privacy.html" rel="noopener noreferrer">Politique de confidentialité</a></li>
+        <li><a href="terms.html" rel="noopener noreferrer">Conditions d’utilisation</a></li>
+        <li><a href="contact.html" rel="noopener noreferrer">Contact</a></li>
+        <li><a href="support.html" rel="noopener noreferrer">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Réseaux sociaux -->
+    <div class="footer-social" aria-label="Suivez-nous sur les réseaux sociaux">
+      <a href="https://facebook.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <img src="images/facebook-2935402_1280.png" alt="Logo Facebook" />
+      </a>
+      <a href="https://twitter.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <img src="images/twitter-3000965_640.png" alt="Logo Twitter" />
+      </a>
+      <a href="https://instagram.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="images/instagram-3814080_640.png" alt="Logo Instagram" />
+      </a>
+      <a href="https://linkedin.com/company/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="images/linkedin-2935407_1280.png" alt="Logo LinkedIn" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="js/main.js" defer></script>
+
+</body>
 </html>

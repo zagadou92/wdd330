@@ -2,40 +2,117 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Convertisseur | CryptoMentor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Convertisseur Crypto | CryptoMentor</title>
+
+  <!-- Font Awesome pour icônes -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
-  <header><h1>Convertisseur</h1></header>
-  <main>
-    <p>Convertis les prix de crypto en FCFA, USD ou EUR :</p>
-    <input type="number" id="amount" placeholder="Montant" />
-    <div class="converter-selectors">
-  <label for="from-currency">Convertir depuis :</label>
-  <select id="from-currency" name="from-currency" required>
-    <option value="">-- Choisissez une crypto --</option>
-    <option value="btc">Bitcoin (BTC)</option>
-    <option value="eth">Ethereum (ETH)</option>
-    <option value="bnb">BNB</option>
-    <option value="usdt">Tether (USDT)</option>
-  </select>
 
-  <label for="to-currency">Vers la devise :</label>
-  <select id="to-currency" name="to-currency" required>
-    <option value="">-- Choisissez une devise --</option>
-    <option value="xof">Franc CFA (XOF)</option>
-    <option value="usd">Dollar US (USD)</option>
-    <option value="eur">Euro (EUR)</option>
-  </select>
-   <button id="convert-btn">Convertir</button>
+<header>
+  <div class="container">
+    <h1><i class="fas fa-exchange-alt"></i> Convertisseur CryptoMentor</h1>
+  </div>
+</header>
 
-      <p id="result">Résultat : </p>
-</div>
+<main role="main" class="container" aria-label="Convertisseur de cryptomonnaies">
+  <p>Convertis les prix de crypto en FCFA, USD ou EUR en temps réel :</p>
 
-    
-    <script type="module" src="js/convert.js"></script>
-  </main>
-  <footer><p>&copy; 2025 CryptoMentor</p></footer>
+  <form id="converter-form" aria-describedby="instructions">
+    <label for="amount">Montant</label>
+    <input
+      type="number"
+      id="amount"
+      name="amount"
+      placeholder="Ex: 1.5"
+      min="0"
+      step="any"
+      required
+      aria-required="true"
+    />
+
+    <label for="from-currency">Convertir depuis (crypto)</label>
+    <select id="from-currency" name="from-currency" required aria-required="true">
+      <option value="">-- Choisissez une crypto --</option>
+      <option value="bitcoin">Bitcoin (BTC)</option>
+      <option value="ethereum">Ethereum (ETH)</option>
+      <option value="binancecoin">BNB</option>
+      <option value="tether">Tether (USDT)</option>
+      <option value="cardano">Cardano (ADA)</option>
+      <option value="solana">Solana (SOL)</option>
+      <option value="ripple">Ripple (XRP)</option>
+    </select>
+
+    <label for="to-currency">Vers la devise</label>
+    <select id="to-currency" name="to-currency" required aria-required="true">
+      <option value="">-- Choisissez une devise --</option>
+      <option value="xof">Franc CFA (XOF)</option>
+      <option value="usd">Dollar US (USD)</option>
+      <option value="eur">Euro (EUR)</option>
+    </select>
+
+    <button type="submit" id="convert-btn" aria-label="Convertir la cryptomonnaie">Convertir</button>
+  </form>
+
+  <!-- Section Résultat -->
+  <div id="result-container" aria-live="polite" aria-atomic="true" hidden>
+    <h3>Résultat de la conversion</h3>
+    <p id="result"></p>
+  </div>
+
+  <p id="error" class="error" role="alert" aria-live="assertive"></p>
+
+  <section id="history" aria-label="Historique des conversions">
+    <h2>Historique des conversions</h2>
+    <ul id="history-list"></ul>
+  </section>
+
+</main>
+
+<footer role="contentinfo" class="site-footer">
+  <div class="container footer-inner">
+    <!-- Section Copyright -->
+    <p class="footer-copy" aria-label="Droits d'auteur">
+      &copy; 2025 CryptoMentor. Tous droits réservés.
+    </p>
+
+    <!-- Liens utiles -->
+    <nav aria-label="Liens de pied de page" class="footer-nav">
+      <ul>
+        <li><a href="privacy.html" rel="noopener noreferrer">Politique de confidentialité</a></li>
+        <li><a href="terms.html" rel="noopener noreferrer">Conditions d’utilisation</a></li>
+        <li><a href="contact.html" rel="noopener noreferrer">Contact</a></li>
+        <li><a href="support.html" rel="noopener noreferrer">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Réseaux sociaux -->
+    <div class="footer-social" aria-label="Suivez-nous sur les réseaux sociaux">
+      <a href="https://facebook.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <img src="images/facebook-2935402_1280.png" alt="Logo Facebook" />
+      </a>
+      <a href="https://twitter.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <img src="images/twitter-3000965_640.png" alt="Logo Twitter" />
+      </a>
+      <a href="https://instagram.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="images/instagram-3814080_640.png" alt="Logo Instagram" />
+      </a>
+      <a href="https://linkedin.com/company/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="images/linkedin-2935407_1280.png" alt="Logo LinkedIn" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="js/main.js"></script>
+
 </body>
 </html>
