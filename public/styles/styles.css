@@ -191,6 +191,11 @@ nav ul li a[aria-current="page"] {
 .footer-inner {
   max-width: 900px;
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .footer-copy {
@@ -233,6 +238,25 @@ nav ul li a[aria-current="page"] {
   outline: none;
 }
 
+.footer-social {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-social a img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  transition: filter 0.3s ease;
+}
+
+.footer-social a:hover img,
+.footer-social a:focus img {
+  filter: brightness(1.2);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .footer-inner {
@@ -244,10 +268,11 @@ nav ul li a[aria-current="page"] {
   .footer-social {
     justify-content: center;
   }
+}
 .social-links {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  justify-content: center;  /* Centre horizontalement */
+  gap: 15px;                /* Espace entre les icônes */
   padding: 10px 0;
 }
 
@@ -258,18 +283,12 @@ nav ul li a[aria-current="page"] {
 
 .social-links a:hover,
 .social-links a:focus {
-  opacity: 0.7;
+  opacity: 0.7;  /* Légère transparence au survol/focus */
   outline: none;
 }
 
 .social-links img {
-  width: 32px;
+  width: 32px;   /* Taille fixe des icônes */
   height: 32px;
   display: block;
 }
-
-
- 
-
-
-
