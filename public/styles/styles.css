@@ -245,6 +245,31 @@ nav ul li a[aria-current="page"] {
     justify-content: center;
   }
 }
+.social-links {
+  display: flex;
+  justify-content: center;  /* Centre horizontalement */
+  gap: 15px;                /* Espace entre les icônes */
+  padding: 10px 0;
+}
+
+.social-links a {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  opacity: 0.7;  /* Légère transparence au survol/focus */
+  outline: none;
+}
+
+.social-links img {
+  width: 32px;   /* Taille fixe des icônes */
+  height: 32px;
+  display: block;
+}
+
 
  
+
 
