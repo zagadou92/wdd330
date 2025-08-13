@@ -128,3 +128,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+  // Carrousel simple avec défilement automatique une par une
+  const slide = document.querySelector('.carousel-slide');
+  const images = document.querySelectorAll('.carousel-slide img');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  let index = 0;
+  let interval;
+
+  // Créer les points d’indication
+  images.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.addEventListener('click', () => {
+      index = i;
+      updateCarousel();
+      resetAutoSlide();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.carousel-dots span');
+
+  function updateCarousel() {
+    slide.style.transform = `translateX(${-index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
+
+  function autoSlide() {
+    index = (index + 1) % images.length;
+    updateCarousel();
+  }
+
+  function resetAutoSlide() {
+    clearInterval(interval);
+    interval = setInterval(autoSlide, 4000);
+  }
+
+  // Initialisation
+  updateCarousel();
+  interval = setInterval(autoSlide, 4000);
+
+  
