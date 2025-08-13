@@ -7,6 +7,11 @@
   <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
   
   <link rel="stylesheet" href="styles/styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
 </head>
 <body>
 
@@ -31,7 +36,6 @@
         <li><a href="guide.html">Débuter</a></li>
       </ul>
       
-
       <form class="search-form" role="search" aria-label="Recherche crypto">
         <input
           type="search"
@@ -57,22 +61,18 @@
     </nav>
   </div>
 </header>
-<!-- Carrousel d'images en fond -->
-<div class="carousel-container">
-  <div class="carousel-slide">
-    <img src="images/pho1.jpg" alt="Graphique Crypto" loading="lazy">
-    <img src="images/pho1.jpg" alt="Formation Crypto" loading="lazy">
-    <img src="images/pho1.jpg" alt="Blockchain" loading="lazy">
-  </div>
-  <div class="carousel-dots"></div>
-</div>
 
 <main>
   <section class="hero container" aria-label="Présentation CryptoMentor">
     <h1>Bienvenue sur CryptoMentor</h1>
     <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases en toute simplicité.</p>
   </section>
- 
+
+  <!-- Conteneur des résultats de recherche -->
+  <section id="search-results" class="search-results" aria-label="Résultats de recherche">
+    <ul id="results-list"></ul>
+  </section>
+
   <section class="features container" aria-label="Fonctionnalités principales">
     <article>
       <i class="fas fa-chart-line fa-3x"></i>
@@ -92,49 +92,9 @@
       <p>Débutants ou avancés, trouvez des astuces et tutoriels adaptés à votre niveau.</p>
     </article>
   </section>
-
-  <!-- Section slider ajoutée ici -->
-  <section class="card-slider container" aria-label="Slider de cartes des fonctionnalités">
-    <h2>Découvrez nos fonctionnalités</h2>
-
-    <div class="slider-container">
-      <div class="slider">
-        <div class="card">
-          <img src="images/pho1.jpg" alt="Graphique des cryptomonnaies" />
-          <h3>Suivi du marché</h3>
-          <p>Gardez un œil sur les prix en temps réel grâce à des graphiques dynamiques.</p>
-        </div>
-        <div class="card">
-          <img src="images/pho1.jpg" alt="Formation sur la crypto" />
-          <h3>Formation</h3>
-          <p>Accédez à des guides et tutoriels pour mieux comprendre la blockchain.</p>
-        </div>
-        <div class="card">
-          <img src="images/pho1.jpg" alt="Technologie blockchain" />
-          <h3>Technologie Blockchain</h3>
-          <p>Découvrez les bases et l'impact de la blockchain dans la finance décentralisée.</p>
-        </div>
-        <div class="card">
-          <img src="images/pho1.jpg" alt="Actualités crypto" />
-          <h3>Actualités</h3>
-          <p>Restez informé avec notre fil d’actualité crypto mis à jour régulièrement.</p>
-        </div>
-        <div class="card">
-          <img src="images/pho1.jpg" alt="Convertisseur de cryptomonnaies" />
-          <h3>Convertisseur</h3>
-          <p>Convertissez instantanément entre cryptomonnaies et devises locales.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="controls">
-      <button id="prev" aria-label="Carte précédente">&#10094;</button>
-      <button id="next" aria-label="Carte suivante">&#10095;</button>
-    </div>
-  </section>
 </main>
 
-<!-- Boutons Inscription et Connexion en bas -->
+<!-- Boutons Inscription et Connexion -->
 <div class="bottom-auth-buttons container" role="region" aria-label="Inscription et Connexion">
   <a href="inscription.html" class="btn-highlight" role="button" tabindex="0">Inscription</a>
   <a href="connexion.html" class="btn-small" role="button" tabindex="0">Connexion</a>
@@ -167,13 +127,43 @@
   </div>
 </footer>
 
+<script defer>
+// Base de données locale simulée
+const cryptoDB = [
+  { name: "Bitcoin", symbol: "BTC", description: "La première et la plus connue des cryptomonnaies." },
+  { name: "Ethereum", symbol: "ETH", description: "Plateforme de smart contracts et crypto populaire." },
+  { name: "Binance Coin", symbol: "BNB", description: "Crypto de l’échange Binance, utilisée pour les frais." },
+  { name: "Tether", symbol: "USDT", description: "Stablecoin indexé sur le dollar US." },
+  { name: "Cardano", symbol: "ADA", description: "Crypto blockchain avec approche scientifique et académique." },
+  { name: "Solana", symbol: "SOL", description: "Blockchain rapide et scalable pour applications décentralisées." },
+  { name: "Ripple", symbol: "XRP", description: "Crypto utilisée pour les transferts internationaux rapides." }
+];
 
+const searchInput = document.getElementById('search-input');
+const resultsList = document.getElementById('results-list');
 
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  resultsList.innerHTML = '';
 
+  if (!query) return;
 
+  const results = cryptoDB.filter(crypto =>
+    crypto.name.toLowerCase().includes(query) || crypto.symbol.toLowerCase().includes(query)
+  );
 
-<script src="js/main.js" defer></script>
+  if (results.length === 0) {
+    resultsList.innerHTML = '<li>Aucun résultat trouvé.</li>';
+    return;
+  }
 
+  results.forEach(crypto => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${crypto.name} (${crypto.symbol})</strong> - ${crypto.description}`;
+    resultsList.appendChild(li);
+  });
+});
+</script>
 
 </body>
 </html>
