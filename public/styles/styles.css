@@ -471,4 +471,75 @@ h1.slider-title {
     margin: 0 5px;
   }
 }
+/* ==== Carrousel d'images ==== */
+.carousel-container {
+  position: relative;
+  max-width: 1000px;
+  height: 400px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Points de navigation */
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-dots span {
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dots span:hover {
+  transform: scale(1.2);
+  background: rgba(255,255,255,0.9);
+}
+
+.carousel-dots .active {
+  background: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 250px;
+  }
+  .carousel-slide img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 180px;
+  }
+  .carousel-slide img {
+    height: 180px;
+  }
+}
+
  
+
