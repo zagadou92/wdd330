@@ -168,5 +168,47 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialisation
   updateCarousel();
   interval = setInterval(autoSlide, 4000);
+const cryptoDB = [
+  { name: "Bitcoin", symbol: "BTC", description: "La première et la plus connue des cryptomonnaies.", logo: "images/bitcoin.png" },
+  { name: "Ethereum", symbol: "ETH", description: "Plateforme de smart contracts et crypto populaire.", logo: "images/ethereum.png" },
+  { name: "Binance Coin", symbol: "BNB", description: "Crypto de l’échange Binance, utilisée pour les frais.", logo: "images/bnb.png" },
+  { name: "Tether", symbol: "USDT", description: "Stablecoin indexé sur le dollar US.", logo: "images/tether.png" },
+  { name: "Cardano", symbol: "ADA", description: "Crypto blockchain avec approche scientifique et académique.", logo: "images/cardano.png" },
+  { name: "Solana", symbol: "SOL", description: "Blockchain rapide et scalable pour applications décentralisées.", logo: "images/solana.png" },
+  { name: "Ripple", symbol: "XRP", description: "Crypto utilisée pour les transferts internationaux rapides.", logo: "images/ripple.png" }
+];
+
+const searchInput = document.getElementById('search-input');
+const resultsList = document.getElementById('results-list');
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  resultsList.innerHTML = '';
+
+  if (!query) return;
+
+  const results = cryptoDB.filter(crypto =>
+    crypto.name.toLowerCase().includes(query) || crypto.symbol.toLowerCase().includes(query)
+  );
+
+  if (results.length === 0) {
+    resultsList.innerHTML = '<p>Aucun résultat trouvé.</p>';
+    return;
+  }
+
+  results.forEach(crypto => {
+    const card = document.createElement('div');
+    card.classList.add('crypto-card');
+    card.innerHTML = `
+      <img src="${crypto.logo}" alt="${crypto.name} logo" class="crypto-logo" />
+      <h3>${crypto.name} (${crypto.symbol})</h3>
+      <p>${crypto.description}</p>
+      <button class="btn-view">Voir plus</button>
+    `;
+    resultsList.appendChild(card);
+  });
+});
+
 
   
+
