@@ -208,7 +208,31 @@ searchInput.addEventListener('input', () => {
     resultsList.appendChild(card);
   });
 });
+const toggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+const icon = toggleButton.querySelector('i');
+
+// Charger le thème enregistré
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+  icon.classList.replace('fa-moon', 'fa-sun');
+}
+
+// Événement clic
+toggleButton.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  
+  // Changer l’icône
+  if (body.classList.contains('dark-mode')) {
+    icon.classList.replace('fa-moon', 'fa-sun');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    icon.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('theme', 'light');
+  }
+});
 
 
   
+
 
