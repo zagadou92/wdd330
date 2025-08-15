@@ -662,6 +662,41 @@ body.dark-mode {
   background-color: #121212;
   color: white;
 }
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide {
+  display: flex;
+  width: 500%; /* 5 images */
+  animation: slide 20s infinite;
+}
+
+.carousel-slide img {
+  width: 20%; /* chaque image prend 20% de la largeur du conteneur */
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  20% { transform: translateX(-20%); }
+  40% { transform: translateX(-40%); }
+  60% { transform: translateX(-60%); }
+  80% { transform: translateX(-80%); }
+  100% { transform: translateX(0%); }
+}
 
  
+
 
