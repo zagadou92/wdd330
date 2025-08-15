@@ -120,6 +120,25 @@
   
 
 <script defer>
+  // Charger le thème enregistré
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+  icon.classList.replace('fa-moon', 'fa-sun');
+}
+
+// Événement clic
+toggleButton.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  
+  // Changer l’icône
+  if (body.classList.contains('dark-mode')) {
+    icon.classList.replace('fa-moon', 'fa-sun');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    icon.classList.replace('fa-sun', 'fa-moon');
+    localStorage.setItem('theme', 'light');
+  }
+});
 // Base de données locale simulée
 const cryptoDB = [
   { name: "Bitcoin", symbol: "BTC", description: "La première et la plus connue des cryptomonnaies." },
