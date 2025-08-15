@@ -13,38 +13,47 @@
 
 <header>
   <div class="container header-container">
+    <!-- Logo -->
     <a href="index.html" class="logo" aria-label="Accueil CryptoMentor">
       <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
       <span>CryptoMentor</span>
     </a>
 
-  
+    <!-- Hamburger -->
+    <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu" />
+    <label for="menu-toggle" class="menu-icon" aria-label="Icône du menu">
+      <i class="fas fa-bars"></i>
+    </label>
 
-
-
-    <nav id="main-nav" role="navigation" aria-label="Menu principal">
-      <ul class="menu">
+    <!-- Menu principal transformé en hamburger -->
+    <nav id="main-nav" class="side-menu" role="navigation" aria-label="Menu principal">
+      <ul>
         <li><a href="index.html" aria-current="page">Accueil</a></li>
-        <li><a href="about.html">À propos</a></li>
+        <li><a href="profile.html">Profil</a></li>
+        <li><a href="privacy.html">Confidentialité</a></li>
+        <li><a href="security.html">Sécurité</a></li>
+        <li><a href="wallet.html">Wallet</a></li>
+        <li><a href="settings.html">Paramètres</a></li>
         <li><a href="convert.html">Convertisseur</a></li>
         <li><a href="glossary.html">Glossaire</a></li>
         <li><a href="news.html">Actualités</a></li>
         <li><a href="guide.html">Débuter</a></li>
       </ul>
-      
+
+      <!-- Recherche -->
       <form class="search-form" role="search" aria-label="Recherche crypto">
         <input type="search" id="search-input" name="search" placeholder="Rechercher une crypto…" aria-label="Rechercher une cryptomonnaie" autocomplete="off" />
         <button type="submit" aria-label="Lancer la recherche"><i class="fas fa-search"></i></button>
       </form>
 
-     
-
+      <!-- Thème -->
       <button id="theme-toggle" aria-label="Changer le mode clair/sombre" title="Changer le mode clair/sombre">
         <i class="fas fa-moon"></i>
       </button>
     </nav>
   </div>
 </header>
+
 
 <main>
   <section class="hero container" aria-label="Présentation CryptoMentor">
