@@ -232,7 +232,18 @@ toggleButton.addEventListener('click', () => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerBtn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+
+  if (burgerBtn && nav) {
+    burgerBtn.addEventListener('change', () => {
+      nav.classList.toggle('active', burgerBtn.checked);
+    });
+  }
+});
 
   
+
 
 
