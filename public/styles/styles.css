@@ -641,5 +641,27 @@ main {
     max-width: 350px;
   }
 }
+/* Style général du bouton */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Mode clair par défaut */
+body {
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Mode sombre */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
 
  
+
