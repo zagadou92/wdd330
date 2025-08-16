@@ -1,100 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptoMentor – Wireframe</title>
-  <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Wireframe uniquement." />
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; color: #0f172a; background: #fff; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CryptoMentor – Wireframe Amélioré</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  body { background: #fff; color: #000; line-height: 1.4; }
+  .container { width: min(1100px, 92%); margin: 0 auto; }
 
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+  /* Wireframe général */
+  body.wireframe * { outline: 2px dashed #8b5cf6; position: relative; }
+  [data-wf]::after {
+    content: attr(data-wf);
+    position: absolute;
+    top: -1.2em;
+    left: 0;
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: #8b5cf6;
+    color: #fff;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    pointer-events: none;
+  }
 
-    header { position: sticky; top: 0; z-index: 50; background: #0b1220; color: #e5e7eb; border-bottom: 1px solid #111827; }
-    .header-container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
-    .logo { display: flex; align-items: center; gap: .5rem; font-weight: 700; letter-spacing: 0.3px; }
-    .logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 8px; }
+  header { background: #eee; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 0.5rem; }
+  .logo img { width: 40px; height: 40px; background: #ccc; }
+  
+  /* Hamburger */
+  #menu-toggle { display: none; }
+  .menu-icon { width: 40px; height: 40px; background: #ccc; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 5px; }
+  .menu-icon i { font-size: 1.2rem; }
 
-    /* Hamburger */
-    #menu-toggle { display: none; }
-    .menu-icon { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; background: #0f172a; border: 1px solid #1f2937; }
-    .menu-icon i { font-size: 1.2rem; }
+  /* Menu latéral */
+  .side-menu { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: #f7f7f7; transform: translateX(105%); transition: transform 0.3s ease; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 1rem; }
+  #menu-toggle:checked ~ .side-menu { transform: translateX(0); }
+  .side-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .side-menu li a { display: block; padding: 0.5rem 1rem; background: #ddd; text-align: center; border-radius: 5px; }
+  .search-form { display: flex; gap: 0.5rem; margin-top: 1rem; }
+  .search-form input { flex: 1; padding: 0.5rem; border-radius: 5px; background: #eee; }
+  .search-form button { padding: 0.5rem; border-radius: 5px; background: #ddd; }
 
-    /* Side menu */
-    .side-menu { position: fixed; top: 0; right: 0; width: min(330px, 90vw); height: 100vh; background: #0b1220; color: #e5e7eb; transform: translateX(105%); transition: transform .35s ease; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 2rem; z-index: 100; }
-    #menu-toggle:checked ~ .side-menu { transform: translateX(0); }
+  main { padding: 2rem 0; display: grid; gap: 2rem; }
+  .hero { text-align: center; padding: 1rem 0; background: #f0f0f0; border-radius: 8px; }
+  .hero .image-placeholder { width: 100%; height: 200px; background: #ccc; margin: 1rem 0; display: flex; align-items: center; justify-content: center; color: #555; font-weight: bold; }
 
-    .side-menu ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
-    .side-menu li a { display: block; padding: .75rem 1rem; border-radius: 10px; border: 1px solid transparent; }
-    .side-menu li a:hover { background: #111827; border-color: #1f2937; }
+  .carousel-container { padding: 1rem 0; }
+  .carousel-slide { display: flex; gap: 1rem; overflow-x: auto; }
+  .carousel-slide .image-placeholder { min-width: 80%; height: 180px; background: #ccc; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-    .search-form { display: flex; gap: .5rem; }
-    .search-form input { flex: 1; padding: .6rem .7rem; border-radius: 10px; border: 1px solid #374151; background: #0f172a; color: #e5e7eb; }
-    .search-form button { border: 1px solid #374151; background: #0f172a; color: #e5e7eb; border-radius: 10px; padding: .6rem .85rem; cursor: pointer; }
+  .features { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .features article { padding: 1rem; background: #eee; border-radius: 8px; display: grid; gap: 0.5rem; text-align: center; }
+  .features .icon-placeholder { width: 50px; height: 50px; background: #ccc; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-    main { padding: 2rem 0; display: grid; gap: 2rem; }
-    .hero { text-align: center; padding: 2rem 0 0; }
-    .hero h1 { margin: 0; font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
-    .hero p { color: #334155; }
+  .bottom-auth-buttons { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
+  .btn-placeholder { padding: 0.5rem 1rem; background: #ddd; border-radius: 5px; text-align: center; display: inline-block; }
 
-    .carousel-container { background: #f8fafc; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; }
-    .carousel { overflow: hidden; }
-    .carousel-slide { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: 1rem; padding: 1rem 0; scroll-snap-type: x mandatory; overflow-x: auto; }
-    .carousel-slide img { width: 100%; height: 220px; object-fit: cover; border-radius: 14px; scroll-snap-align: start; }
-
-    .features { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .features article { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1rem; display: grid; gap: .5rem; }
-    .features i { opacity: .85; }
-
-    .bottom-auth-buttons { display: flex; gap: .75rem; justify-content: center; margin: 1rem auto 2rem; }
-    .btn-highlight { background: #0ea5e9; color: white; padding: .75rem 1rem; border-radius: 12px; font-weight: 600; }
-    .btn-small { background: #e5e7eb; color: #111827; padding: .75rem 1rem; border-radius: 12px; font-weight: 600; }
-
-    .site-footer { background: #0b1220; color: #cbd5e1; padding: 2rem 0; display: grid; gap: 1rem; text-align: center; }
-    .site-footer nav { display: flex; flex-wrap: wrap; gap: .5rem .75rem; justify-content: center; }
-    .site-footer .separator { opacity: .5; }
-    .social-links { display: flex; gap: .75rem; justify-content: center; }
-    .social-links img { width: 26px; height: 26px; filter: grayscale(1) brightness(1.2); opacity: .9; }
-
-    :focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; border-radius: 6px; }
-
-    /* Wireframe mode activé */
-    body.wireframe * { outline: 1px dashed #8b5cf6; outline-offset: -1px; }
-    body.wireframe [data-wf] { position: relative; }
-    body.wireframe [data-wf]::after {
-      content: attr(data-wf);
-      position: absolute;
-      top: .25rem; left: .25rem;
-      font-size: .7rem; font-weight: 700;
-      background: #8b5cf6; color: white;
-      padding: .15rem .35rem; border-radius: .4rem;
-      opacity: .9; pointer-events: none;
-    }
-  </style>
+  footer { padding: 2rem 0; text-align: center; background: #eee; }
+  footer nav a { margin: 0 0.5rem; background: #ddd; padding: 0.3rem 0.5rem; border-radius: 3px; display: inline-block; }
+  .social-links { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+  .social-links .icon-placeholder { width: 30px; height: 30px; background: #ccc; border-radius: 50%; display: inline-block; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="wireframe">
 
 <header data-wf="Header">
-  <div class="container header-container">
+  <div class="container">
     <a href="#" class="logo" data-wf="Logo">
-      <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
+      <div class="image-placeholder">Logo</div>
       <span>CryptoMentor</span>
     </a>
 
     <div class="actions-inline" data-wf="Actions">
-      <!-- Hamburger -->
-      <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu" />
-      <label for="menu-toggle" class="menu-icon" title="Menu">
-        <i class="fas fa-bars"></i>
-      </label>
+      <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu">
+      <label for="menu-toggle" class="menu-icon"><i class="fas fa-bars"></i></label>
     </div>
 
-    <!-- Menu latéral -->
     <nav class="side-menu" role="navigation" aria-label="Menu principal" data-wf="Menu">
       <ul data-wf="Liens">
         <li><a href="#">Accueil</a></li>
@@ -105,10 +89,9 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#support">Support</a></li>
       </ul>
-
-      <form class="search-form" role="search" aria-label="Recherche crypto">
-        <input type="search" placeholder="Rechercher une crypto…" />
-        <button type="submit"><i class="fas fa-search"></i></button>
+      <form class="search-form">
+        <input type="search" placeholder="Rechercher…">
+        <button type="submit">OK</button>
       </form>
     </nav>
   </div>
@@ -117,68 +100,56 @@
 <main data-wf="Main">
   <section class="hero container" data-wf="Hero">
     <h1>Bienvenue sur CryptoMentor</h1>
-    <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases en toute simplicité.</p>
+    <div class="image-placeholder">Image Hero</div>
+    <p>Suivez les cryptomonnaies facilement.</p>
   </section>
 
   <section class="carousel-container" data-wf="Carrousel">
-    <div class="container">
-      <div class="carousel">
-        <div class="carousel-slide">
-          <img src="images/pho1.jpg" alt="Image 1" />
-          <img src="images/pho1.jpg" alt="Image 2" />
-          <img src="images/pho1.jpg" alt="Image 3" />
-        </div>
-      </div>
+    <div class="carousel-slide">
+      <div class="image-placeholder">Image 1</div>
+      <div class="image-placeholder">Image 2</div>
+      <div class="image-placeholder">Image 3</div>
     </div>
   </section>
 
   <section class="features container" data-wf="Features">
-    <article data-wf="Feature bloc">
-      <i class="fas fa-chart-line fa-3x"></i>
-      <h2>Marché en temps réel</h2>
-      <p>Suivez l'évolution des prix des cryptos en direct, avec des graphiques clairs et précis.</p>
+    <article>
+      <div class="icon-placeholder">📈</div>
+      <h2>Marché</h2>
+      <p>Prix en direct</p>
     </article>
-
-    <article data-wf="Feature bloc">
-      <i class="fas fa-book fa-3x"></i>
-      <h2>Glossaire complet</h2>
-      <p>Comprenez tous les termes essentiels grâce à notre glossaire simple et accessible.</p>
+    <article>
+      <div class="icon-placeholder">📚</div>
+      <h2>Glossaire</h2>
+      <p>Termes essentiels</p>
     </article>
-
-    <article data-wf="Feature bloc">
-      <i class="fas fa-lightbulb fa-3x"></i>
-      <h2>Conseils et guides</h2>
-      <p>Débutants ou avancés, trouvez des astuces et tutoriels adaptés à votre niveau.</p>
+    <article>
+      <div class="icon-placeholder">💡</div>
+      <h2>Guides</h2>
+      <p>Astuce et tutoriels</p>
     </article>
   </section>
 </main>
 
-<div class="bottom-auth-buttons container" data-wf="CTA bas">
-  <a href="#inscription" class="btn-highlight">Inscription</a>
-  <a href="#connexion" class="btn-small">Connexion</a>
+<div class="bottom-auth-buttons">
+  <div class="btn-placeholder">Inscription</div>
+  <div class="btn-placeholder">Connexion</div>
 </div>
 
-
-<footer class="site-footer" data-wf="Footer">
-  <div class="container">
-    <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
-    <nav>
-      <a href="#privacy">Politique de confidentialité</a>
-      <span class="separator">|</span>
-      <a href="#terms">Conditions d’utilisation</a>
-      <span class="separator">|</span>
-      <a href="#contact">Contact</a>
-      <span class="separator">|</span>
-      <a href="#support">Support</a>
-    </nav>
-    <div class="social-links">
-      <a href="#"><img src="images/facebook-2935402_1280.png" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter-3000965_640.png" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram-3814080_640.png" alt="Instagram" /></a>
-      <a href="#"><img src="images/linkedin-2935407_1280.png" alt="LinkedIn" /></a>
-    </div>
+<footer data-wf="Footer">
+  <nav>
+    <a href="#privacy">Politique</a>
+    <a href="#terms">Conditions</a>
+    <a href="#contact">Contact</a>
+    <a href="#support">Support</a>
+  </nav>
+  <div class="social-links">
+    <div class="icon-placeholder">F</div>
+    <div class="icon-placeholder">T</div>
+    <div class="icon-placeholder">I</div>
+    <div class="icon-placeholder">L</div>
   </div>
 </footer>
-  <script src="js/main.js"></script>
+
 </body>
 </html>
