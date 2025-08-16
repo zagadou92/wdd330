@@ -11,11 +11,56 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     crossorigin="anonymous"
   />
+  <style>
+    /* === Mode Wireframe === */
+    body.wireframe * {
+      outline: 1px dashed #e74c3c !important;
+    }
+
+    body.wireframe header::before,
+    body.wireframe main::before,
+    body.wireframe footer::before,
+    body.wireframe article::before {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      padding: 2px 6px;
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border-radius: 3px;
+    }
+    body.wireframe header::before { content: "HEADER"; background: rgba(231, 76, 60, 0.7); }
+    body.wireframe main::before { content: "MAIN"; background: rgba(52, 152, 219, 0.7); }
+    body.wireframe footer::before { content: "FOOTER"; background: rgba(46, 204, 113, 0.7); }
+    body.wireframe article::before { content: "ARTICLE"; background: rgba(241, 196, 15, 0.7); }
+
+    /* Bouton Toggle */
+    .wireframe-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .wireframe-toggle:hover {
+      background: #555;
+    }
+  </style>
 </head>
 <body>
+  <button class="wireframe-toggle" aria-label="Activer/Désactiver Wireframe">
+    <i class="fas fa-border-all"></i> Wireframe
+  </button>
+
   <header>
     <h1>🚀 Bienvenue sur le Guide du Débutant</h1>
-    <!-- Chemin retour vers l'accueil -->
     <a href="index.html" class="back-home"><i class="fas fa-home"></i> Retour à l’accueil</a>
   </header>
 
@@ -69,12 +114,7 @@
 
   <footer role="contentinfo" class="site-footer">
     <div class="container footer-inner">
-      <!-- Section Copyright -->
-      <p class="footer-copy" aria-label="Droits d'auteur">
-        &copy; 2025 CryptoMentor. Tous droits réservés.
-      </p>
-
-      <!-- Liens utiles -->
+      <p class="footer-copy">&copy; 2025 CryptoMentor. Tous droits réservés.</p>
       <nav aria-label="Liens de pied de page" class="footer-nav">
         <ul>
           <li><a href="privacy.html" rel="noopener noreferrer">Politique de confidentialité</a></li>
@@ -83,25 +123,20 @@
           <li><a href="support.html" rel="noopener noreferrer">Support</a></li>
         </ul>
       </nav>
-
-      <!-- Réseaux sociaux -->
-      <div class="footer-social" aria-label="Suivez-nous sur les réseaux sociaux">
-        <a href="https://facebook.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <img src="images/facebook-2935402_1280.png" alt="Logo Facebook" />
-        </a>
-        <a href="https://twitter.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <img src="images/twitter-3000965_640.png" alt="Logo Twitter" />
-        </a>
-        <a href="https://instagram.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="images/instagram-3814080_640.png" alt="Logo Instagram" />
-        </a>
-        <a href="https://linkedin.com/company/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="images/linkedin-2935407_1280.png" alt="Logo LinkedIn" />
-        </a>
+      <div class="footer-social">
+        <a href="#"><img src="images/facebook-2935402_1280.png" alt="Facebook" /></a>
+        <a href="#"><img src="images/twitter-3000965_640.png" alt="Twitter" /></a>
+        <a href="#"><img src="images/instagram-3814080_640.png" alt="Instagram" /></a>
+        <a href="#"><img src="images/linkedin-2935407_1280.png" alt="LinkedIn" /></a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    // Toggle wireframe
+    document.querySelector(".wireframe-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("wireframe");
+    });
+  </script>
 </body>
 </html>
