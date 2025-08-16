@@ -1,23 +1,69 @@
+Voici une version enrichie de ta page **À propos**, avec un **mode wireframe** intégré (bouton dans l’en-tête, comme sur l’autre fichier).
+👉 Quand tu cliques sur l’icône **grille**, toutes les sections sont entourées et étiquetées.
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>À propos | CryptoMentor</title>
-<!-- Lien vers le fichier CSS externe -->
 <link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+<style>
+/* ========================= */
+/* AJOUT MODE WIREFRAME */
+/* ========================= */
+body.wireframe * {
+  outline: 1px dashed #8b5cf6;
+  outline-offset: -1px;
+}
+body.wireframe [data-wf] {
+  position: relative;
+}
+body.wireframe [data-wf]::after {
+  content: attr(data-wf);
+  position: absolute;
+  top: .25rem;
+  left: .25rem;
+  font-size: .7rem;
+  font-weight: 700;
+  background: #8b5cf6;
+  color: white;
+  padding: .15rem .35rem;
+  border-radius: .4rem;
+  opacity: .9;
+  pointer-events: none;
+}
+/* Bouton wireframe */
+#wf-toggle {
+  border: 1px solid #374151;
+  background: #0f172a;
+  color: #fff;
+  border-radius: 8px;
+  padding: .45rem .65rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+</style>
 </head>
 <body>
 
-<header>
+<header data-wf="Header">
   <h1>À propos de CryptoMentor</h1>
-  <!-- Chemin retour vers l'accueil -->
-  <a href="index.html" class="back-home">🏠 Retour à l’accueil</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="index.html" class="back-home">🏠 Retour à l’accueil</a>
+    <!-- Bouton wireframe -->
+    <button id="wf-toggle" aria-pressed="false" aria-label="Basculer le mode wireframe" title="Wireframe">
+      <i class="fa-solid fa-border-all"></i>
+    </button>
+  </div>
 </header>
 
-<main>
+<main data-wf="Main">
   <!-- Mission -->
-  <section>
+  <section data-wf="Mission">
     <h2>Notre mission</h2>
     <p>
       CryptoMentor a pour mission de simplifier le monde complexe des cryptomonnaies
@@ -27,7 +73,7 @@
   </section>
 
   <!-- Vision -->
-  <section>
+  <section data-wf="Vision">
     <h2>Notre vision</h2>
     <p>
       Devenir la référence en éducation crypto francophone, en fournissant des outils
@@ -36,7 +82,7 @@
   </section>
 
   <!-- Valeurs -->
-  <section>
+  <section data-wf="Valeurs">
     <h2>Nos valeurs</h2>
     <ul>
       <li>Accessibilité : rendre l’information crypto compréhensible pour tous</li>
@@ -47,7 +93,7 @@
   </section>
 
   <!-- Services -->
-  <section>
+  <section data-wf="Services">
     <h2>Nos services</h2>
     <ul>
       <li>Suivi des prix des cryptomonnaies en temps réel</li>
@@ -59,7 +105,7 @@
   </section>
 
   <!-- Équipe -->
-  <section>
+  <section data-wf="Équipe">
     <h2>Notre équipe</h2>
     <p>
       Une équipe passionnée par la technologie blockchain, l’éducation numérique
@@ -73,7 +119,7 @@
   </section>
 
   <!-- Contact -->
-  <section>
+  <section data-wf="Contact">
     <h2>Contact</h2>
     <p>Email : <a href="mailto:contact@cryptomentor.com">contact@cryptomentor.com</a></p>
     <p>Twitter : <a href="#">@CryptoMentor</a></p>
@@ -82,9 +128,9 @@
   </section>
 </main>
 
-<footer role="contentinfo" class="site-footer">
+<footer role="contentinfo" class="site-footer" data-wf="Footer">
   <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
-  <nav aria-label="Liens de pied de page">
+  <nav aria-label="Liens de pied de page" data-wf="Liens pied">
     <a href="privacy.html">Politique de confidentialité</a>
     <span aria-hidden="true" class="separator">|</span>
     <a href="terms.html">Conditions d’utilisation</a>
@@ -93,7 +139,7 @@
     <span aria-hidden="true" class="separator">|</span>
     <a href="support.html">Support</a>
   </nav>
-  <div class="social-links">
+  <div class="social-links" data-wf="Réseaux sociaux">
     <a href="https://facebook.com/cryptomentor" aria-label="Facebook">
       <img src="images/facebook-2935402_1280.png" alt="Facebook" />
     </a>
@@ -109,8 +155,16 @@
   </div>
 </footer>
 
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const btnWf = document.getElementById('wf-toggle');
+  btnWf?.addEventListener('click', () => {
+    const active = document.body.classList.toggle('wireframe');
+    btnWf.setAttribute('aria-pressed', String(active));
+  });
+</script>
 </body>
 </html>
+```
 
 
