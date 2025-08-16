@@ -3,45 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptoMentor – Wireframe intégré</title>
+  <title>CryptoMentor – Wireframe + Hamburger</title>
   <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-  <link rel="stylesheet" href="styles/styles.css">
   <style>
-    /* Reset simple */
     *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; line-height: 1.5; color: #0f172a; background: #fff; transition: background .3s, color .3s; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; color: #0f172a; background: #fff; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
     .container { width: min(1100px, 92%); margin: 0 auto; }
 
     header { position: sticky; top: 0; z-index: 50; background: #0b1220; color: #e5e7eb; border-bottom: 1px solid #111827; }
-    .header-container { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: .75rem 0; }
-    .logo { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; letter-spacing: 0.3px; }
+    .header-container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+    .logo { display: flex; align-items: center; gap: .5rem; font-weight: 700; letter-spacing: 0.3px; }
     .logo img { width: 40px; height: 40px; object-fit: cover; border-radius: 8px; }
 
     /* Hamburger */
     #menu-toggle { display: none; }
-    .menu-icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; background: #0f172a; border: 1px solid #1f2937; }
-    .menu-icon i { font-size: 1.1rem; }
+    .menu-icon { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; background: #0f172a; border: 1px solid #1f2937; }
+    .menu-icon i { font-size: 1.2rem; }
 
     /* Side menu */
-    .side-menu { position: fixed; inset: 0 0 0 auto; width: min(330px, 90vw); transform: translateX(105%); transition: transform .35s ease; background: #0b1220; color: #e5e7eb; box-shadow: -20px 0 40px rgba(0,0,0,.35); padding: 1rem; display: grid; grid-template-rows: auto auto 1fr; gap: 1rem; }
+    .side-menu { position: fixed; top: 0; right: 0; width: min(330px, 90vw); height: 100vh; background: #0b1220; color: #e5e7eb; transform: translateX(105%); transition: transform .35s ease; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 2rem; z-index: 100; }
     #menu-toggle:checked ~ .side-menu { transform: translateX(0); }
 
-    .side-menu ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .25rem; }
-    .side-menu li a { display: block; padding: .65rem .75rem; border-radius: 10px; border: 1px solid transparent; }
+    .side-menu ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .side-menu li a { display: block; padding: .75rem 1rem; border-radius: 10px; border: 1px solid transparent; }
     .side-menu li a:hover { background: #111827; border-color: #1f2937; }
-    .search-form { display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
-    .search-form input { padding: .6rem .7rem; border-radius: 10px; border: 1px solid #374151; background: #0f172a; color: #e5e7eb; }
+
+    .search-form { display: flex; gap: .5rem; }
+    .search-form input { flex: 1; padding: .6rem .7rem; border-radius: 10px; border: 1px solid #374151; background: #0f172a; color: #e5e7eb; }
     .search-form button { border: 1px solid #374151; background: #0f172a; color: #e5e7eb; border-radius: 10px; padding: .6rem .85rem; cursor: pointer; }
 
-    #theme-toggle, #wireframe-toggle { border: 1px solid #374151; background: #0f172a; color: #e5e7eb; border-radius: 10px; padding: .55rem .75rem; cursor: pointer; }
-
     main { padding: 2rem 0; display: grid; gap: 2rem; }
-    .hero { text-align: center; display: grid; gap: .5rem; padding: 2rem 0 0; }
+    .hero { text-align: center; padding: 2rem 0 0; }
     .hero h1 { margin: 0; font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
     .hero p { color: #334155; }
 
@@ -58,12 +55,15 @@
     .btn-highlight { background: #0ea5e9; color: white; padding: .75rem 1rem; border-radius: 12px; font-weight: 600; }
     .btn-small { background: #e5e7eb; color: #111827; padding: .75rem 1rem; border-radius: 12px; font-weight: 600; }
 
-    .site-footer { background: #0b1220; color: #cbd5e1; padding: 2rem 0; display: grid; gap: 1rem; }
-    .site-footer nav { display: flex; flex-wrap: wrap; gap: .5rem .75rem; align-items: center; justify-content: center; }
+    .site-footer { background: #0b1220; color: #cbd5e1; padding: 2rem 0; display: grid; gap: 1rem; text-align: center; }
+    .site-footer nav { display: flex; flex-wrap: wrap; gap: .5rem .75rem; justify-content: center; }
     .site-footer .separator { opacity: .5; }
     .social-links { display: flex; gap: .75rem; justify-content: center; }
     .social-links img { width: 26px; height: 26px; filter: grayscale(1) brightness(1.2); opacity: .9; }
 
+    :focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; border-radius: 6px; }
+
+    /* Wireframe mode */
     body.wireframe * { outline: 1px dashed #8b5cf6; outline-offset: -1px; }
     body.wireframe [data-wf] { position: relative; }
     body.wireframe [data-wf]::after {
@@ -76,12 +76,7 @@
       opacity: .9; pointer-events: none;
     }
 
-    :focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; border-radius: 6px; }
-
-    .actions-inline { display: inline-flex; align-items: center; gap: .5rem; }
-    section, nav, header, footer, main, article, form, ul, li, .carousel, .carousel-slide, .features, .site-footer nav, .social-links { border-radius: 12px; }
-
-    /* Mode sombre / clair */
+    /* Dark mode */
     body.dark-mode { background: #0b1220; color: #e5e7eb; }
     body.dark-mode .hero p { color: #cbd5e1; }
     body.dark-mode .features article { background: #1f2937; border-color: #374151; }
@@ -94,137 +89,118 @@
 
 <header data-wf="Header">
   <div class="container header-container">
-    <!-- Logo -->
-    <a href="#" class="logo" aria-label="Accueil CryptoMentor" data-wf="Logo">
+    <a href="#" class="logo" data-wf="Logo">
       <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
       <span>CryptoMentor</span>
     </a>
 
-    <!-- Actions: Wireframe + Hamburger + Thème -->
     <div class="actions-inline" data-wf="Actions">
+      <!-- Wireframe toggle -->
       <button id="wireframe-toggle" aria-pressed="false" aria-label="Basculer le mode wireframe" title="Wireframe">
         <i class="fa-solid fa-border-all"></i>
       </button>
 
-      <button id="theme-toggle" aria-label="Changer le mode clair/sombre" title="Mode clair/sombre">
-        <i class="fas fa-moon"></i>
-      </button>
-
+      <!-- Hamburger -->
       <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu" />
-      <label for="menu-toggle" class="menu-icon" aria-label="Icône du menu" title="Menu">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+      <label for="menu-toggle" class="menu-icon" title="Menu">
+        <i class="fas fa-bars"></i>
       </label>
     </div>
 
-    <!-- Menu principal transformé en hamburger -->
-    <nav id="main-nav" class="side-menu" role="navigation" aria-label="Menu principal" data-wf="Menu">
+    <!-- Menu latéral -->
+    <nav class="side-menu" role="navigation" aria-label="Menu principal" data-wf="Menu">
       <ul data-wf="Liens">
-        <li><a href="#" aria-current="page">Accueil</a></li>
+        <li><a href="#">Accueil</a></li>
         <li><a href="#convert">Convertisseur</a></li>
         <li><a href="#glossary">Glossaire</a></li>
         <li><a href="#news">Actualités</a></li>
         <li><a href="#guide">Débuter</a></li>
       </ul>
 
-      <form class="search-form" role="search" aria-label="Recherche crypto" data-wf="Recherche">
-        <input type="search" id="search-input" name="search" placeholder="Rechercher une crypto…" aria-label="Rechercher une cryptomonnaie" autocomplete="off" />
-        <button type="submit" aria-label="Lancer la recherche"><i class="fas fa-search"></i></button>
+      <form class="search-form" role="search" aria-label="Recherche crypto">
+        <input type="search" placeholder="Rechercher une crypto…" />
+        <button type="submit"><i class="fas fa-search"></i></button>
       </form>
     </nav>
   </div>
 </header>
 
 <main data-wf="Main">
-  <section class="hero container" aria-label="Présentation CryptoMentor" data-wf="Hero
-
-<main data-wf="Main">
-  <section class="hero container" aria-label="Présentation CryptoMentor" data-wf="Hero">
+  <section class="hero container" data-wf="Hero">
     <h1>Bienvenue sur CryptoMentor</h1>
     <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases en toute simplicité.</p>
   </section>
 
-  <section class="carousel-container" aria-label="Carrousel d'images" data-wf="Carrousel">
+  <section class="carousel-container" data-wf="Carrousel">
     <div class="container">
-      <div class="carousel" data-wf="Viewport">
-        <div class="carousel-slide" data-wf="Slides">
+      <div class="carousel">
+        <div class="carousel-slide">
           <img src="images/pho1.jpg" alt="Image 1" />
           <img src="images/pho1.jpg" alt="Image 2" />
           <img src="images/pho1.jpg" alt="Image 3" />
-          <img src="images/pho1.jpg" alt="Image 4" />
-          <img src="images/pho1.jpg" alt="Image 5" />
         </div>
       </div>
     </div>
   </section>
 
-  <section id="search-results" class="search-results container" aria-label="Résultats de recherche" data-wf="Résultats">
-    <h2>Résultats de recherche</h2>
-    <div id="results-list" class="results-grid" data-wf="Grille"></div>
-  </section>
-
-  <section class="features container" aria-label="Fonctionnalités principales" data-wf="Features">
+  <section class="features container" data-wf="Features">
     <article data-wf="Feature bloc">
-      <i class="fas fa-chart-line fa-3x" aria-hidden="true"></i>
+      <i class="fas fa-chart-line fa-3x"></i>
       <h2>Marché en temps réel</h2>
       <p>Suivez l'évolution des prix des cryptos en direct, avec des graphiques clairs et précis.</p>
     </article>
 
     <article data-wf="Feature bloc">
-      <i class="fas fa-book fa-3x" aria-hidden="true"></i>
+      <i class="fas fa-book fa-3x"></i>
       <h2>Glossaire complet</h2>
       <p>Comprenez tous les termes essentiels grâce à notre glossaire simple et accessible.</p>
     </article>
 
     <article data-wf="Feature bloc">
-      <i class="fas fa-lightbulb fa-3x" aria-hidden="true"></i>
+      <i class="fas fa-lightbulb fa-3x"></i>
       <h2>Conseils et guides</h2>
       <p>Débutants ou avancés, trouvez des astuces et tutoriels adaptés à votre niveau.</p>
     </article>
   </section>
 </main>
 
-<div class="bottom-auth-buttons container" role="region" aria-label="Inscription et Connexion" data-wf="CTA bas">
-  <a href="#inscription" class="btn-highlight" role="button" tabindex="0">Inscription</a>
-  <a href="#connexion" class="btn-small" role="button" tabindex="0">Connexion</a>
+<div class="bottom-auth-buttons container" data-wf="CTA bas">
+  <a href="#inscription" class="btn-highlight">Inscription</a>
+  <a href="#connexion" class="btn-small">Connexion</a>
 </div>
 
-<footer role="contentinfo" class="site-footer" data-wf="Footer">
-  <div class="container" data-wf="Footer container">
+<footer class="site-footer" data-wf="Footer">
+  <div class="container">
     <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
-    <nav aria-label="Liens de pied de page" data-wf="Liens pied">
+    <nav>
       <a href="#privacy">Politique de confidentialité</a>
-      <span aria-hidden="true" class="separator">|</span>
+      <span class="separator">|</span>
       <a href="#terms">Conditions d’utilisation</a>
-      <span aria-hidden="true" class="separator">|</span>
+      <span class="separator">|</span>
       <a href="#contact">Contact</a>
-      <span aria-hidden="true" class="separator">|</span>
+      <span class="separator">|</span>
       <a href="#support">Support</a>
     </nav>
-    <div class="social-links" data-wf="Réseaux sociaux">
-      <a href="#" aria-label="Facebook">
-        <img src="images/facebook-2935402_1280.png" alt="Facebook" />
-      </a>
-      <a href="#" aria-label="Twitter">
-        <img src="images/twitter-3000965_640.png" alt="Twitter" />
-      </a>
-      <a href="#" aria-label="Instagram">
-        <img src="images/instagram-3814080_640.png" alt="Instagram" />
-      </a>
-      <a href="#" aria-label="LinkedIn">
-        <img src="images/linkedin-2935407_1280.png" alt="LinkedIn" />
-      </a>
+    <div class="social-links">
+      <a href="#"><img src="images/facebook-2935402_1280.png" alt="Facebook" /></a>
+      <a href="#"><img src="images/twitter-3000965_640.png" alt="Twitter" /></a>
+      <a href="#"><img src="images/instagram-3814080_640.png" alt="Instagram" /></a>
+      <a href="#"><img src="images/linkedin-2935407_1280.png" alt="LinkedIn" /></a>
     </div>
   </div>
 </footer>
 
-<!-- JS: toggle wireframe -->
 <script>
+  // Wireframe toggle
   const btnWireframe = document.getElementById('wireframe-toggle');
   btnWireframe?.addEventListener('click', () => {
-    const isActive = document.body.classList.toggle('wireframe');
-    btnWireframe.setAttribute('aria-pressed', String(isActive));
+    const active = document.body.classList.toggle('wireframe');
+    btnWireframe.setAttribute('aria-pressed', active);
   });
+
+  // Optionnel: Dark mode si tu veux
+  const themeBtn = document.getElementById('theme-toggle');
+  themeBtn?.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
 </script>
-<script src="js/main.js"></script>
 </body>
 </html>
