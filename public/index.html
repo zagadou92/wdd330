@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CryptoMentor – Wireframe Amélioré</title>
+<title>CryptoMentor – Wireframe Simple</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
   body { background: #fff; color: #000; line-height: 1.4; }
   .container { width: min(1100px, 92%); margin: 0 auto; }
 
-  /* Wireframe général */
-  body.wireframe * { outline: 2px dashed #8b5cf6; position: relative; }
+  /* Wireframe simple */
+  body.wireframe * { outline: 1px dashed #8b5cf6; position: relative; }
   [data-wf]::after {
     content: attr(data-wf);
     position: absolute;
@@ -27,8 +27,8 @@
 
   header { background: #eee; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; }
   .logo { display: flex; align-items: center; gap: 0.5rem; }
-  .logo img { width: 40px; height: 40px; background: #ccc; }
-  
+  .logo .image-placeholder { width: 40px; height: 40px; background: #ccc; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+
   /* Hamburger */
   #menu-toggle { display: none; }
   .menu-icon { width: 40px; height: 40px; background: #ccc; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 5px; }
@@ -45,15 +45,15 @@
 
   main { padding: 2rem 0; display: grid; gap: 2rem; }
   .hero { text-align: center; padding: 1rem 0; background: #f0f0f0; border-radius: 8px; }
-  .hero .image-placeholder { width: 100%; height: 200px; background: #ccc; margin: 1rem 0; display: flex; align-items: center; justify-content: center; color: #555; font-weight: bold; }
+  .hero .image-placeholder { width: 100%; height: 200px; background: #ccc; margin: 1rem 0; display: flex; align-items: center; justify-content: center; }
 
   .carousel-container { padding: 1rem 0; }
   .carousel-slide { display: flex; gap: 1rem; overflow-x: auto; }
-  .carousel-slide .image-placeholder { min-width: 80%; height: 180px; background: #ccc; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+  .carousel-slide .image-placeholder { min-width: 80%; height: 150px; background: #ccc; display: flex; align-items: center; justify-content: center; }
 
-  .features { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .features article { padding: 1rem; background: #eee; border-radius: 8px; display: grid; gap: 0.5rem; text-align: center; }
-  .features .icon-placeholder { width: 50px; height: 50px; background: #ccc; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+  .features { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .features article { padding: 1rem; background: #eee; border-radius: 8px; text-align: center; }
+  .features .icon-placeholder { width: 40px; height: 40px; background: #ccc; border-radius: 50%; margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center; }
 
   .bottom-auth-buttons { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
   .btn-placeholder { padding: 0.5rem 1rem; background: #ddd; border-radius: 5px; text-align: center; display: inline-block; }
@@ -86,8 +86,6 @@
         <li><a href="#glossary">Glossaire</a></li>
         <li><a href="#news">Actualités</a></li>
         <li><a href="#guide">Débuter</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#support">Support</a></li>
       </ul>
       <form class="search-form">
         <input type="search" placeholder="Rechercher…">
