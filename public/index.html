@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptoMentor – Wireframe + Hamburger</title>
-  <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
+  <title>CryptoMentor – Wireframe</title>
+  <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Wireframe uniquement." />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <style>
@@ -63,7 +63,7 @@
 
     :focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; border-radius: 6px; }
 
-    /* Wireframe mode */
+    /* Wireframe mode activé */
     body.wireframe * { outline: 1px dashed #8b5cf6; outline-offset: -1px; }
     body.wireframe [data-wf] { position: relative; }
     body.wireframe [data-wf]::after {
@@ -75,17 +75,9 @@
       padding: .15rem .35rem; border-radius: .4rem;
       opacity: .9; pointer-events: none;
     }
-
-    /* Dark mode */
-    body.dark-mode { background: #0b1220; color: #e5e7eb; }
-    body.dark-mode .hero p { color: #cbd5e1; }
-    body.dark-mode .features article { background: #1f2937; border-color: #374151; }
-    body.dark-mode .carousel-container { background: #111827; border-color: #1f2937; }
-    body.dark-mode .side-menu { background: #111827; color: #e5e7eb; }
-    body.dark-mode .side-menu input, body.dark-mode .side-menu button { background: #1f2937; color: #e5e7eb; border-color: #374151; }
   </style>
 </head>
-<body>
+<body class="wireframe">
 
 <header data-wf="Header">
   <div class="container header-container">
@@ -95,11 +87,6 @@
     </a>
 
     <div class="actions-inline" data-wf="Actions">
-      <!-- Wireframe toggle -->
-      <button id="wireframe-toggle" aria-pressed="false" aria-label="Basculer le mode wireframe" title="Wireframe">
-        <i class="fa-solid fa-border-all"></i>
-      </button>
-
       <!-- Hamburger -->
       <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu" />
       <label for="menu-toggle" class="menu-icon" title="Menu">
@@ -191,14 +178,5 @@
     </div>
   </div>
 </footer>
-
-<script>
-  // Wireframe toggle
-  const btnWireframe = document.getElementById('wireframe-toggle');
-  btnWireframe?.addEventListener('click', () => {
-    const active = document.body.classList.toggle('wireframe');
-    btnWireframe.setAttribute('aria-pressed', active);
-  });
-</script>
 </body>
 </html>
