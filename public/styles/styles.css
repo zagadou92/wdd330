@@ -751,8 +751,47 @@ body.dark-mode {
     margin-bottom: 0;
   }
 }
+/* Conteneur principal */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+/* Conteneur général */
+.container {
+  width: min(1100px, 100%); /* Limite à 100% pour petits écrans */
+  margin: 0 auto;
+  padding: 0 1rem; /* Petit padding horizontal */
+}
+
+/* Carousel */
+.carousel-slide {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Pour mobile */
+}
+
+.carousel-slide .image-placeholder {
+  min-width: 80%; /* Garde la largeur adaptée */
+  max-width: 100%; /* Ne dépasse jamais la largeur du parent */
+  height: 150px;
+}
+
+/* Side Menu Hamburger */
+.side-menu {
+  width: min(280px, 80vw); /* Toujours visible sans dépasser */
+  height: 100vh;
+  overflow-y: auto; /* Scroll interne si le contenu dépasse */
+  box-sizing: border-box;
+  padding: 2rem 1rem;
+}
+
 
  
+
 
 
 
