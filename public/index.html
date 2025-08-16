@@ -8,11 +8,10 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="styles/styles.css">
-  <!-- Styles principaux + mode wireframe -->
   <style>
     /* Reset simple */
     *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; line-height: 1.5; color: #0f172a; background: #fff; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; line-height: 1.5; color: #0f172a; background: #fff; transition: background .3s, color .3s; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -46,7 +45,6 @@
     .hero h1 { margin: 0; font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
     .hero p { color: #334155; }
 
-    /* Carrousel simple */
     .carousel-container { background: #f8fafc; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; }
     .carousel { overflow: hidden; }
     .carousel-slide { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: 1rem; padding: 1rem 0; scroll-snap-type: x mandatory; overflow-x: auto; }
@@ -66,9 +64,6 @@
     .social-links { display: flex; gap: .75rem; justify-content: center; }
     .social-links img { width: 26px; height: 26px; filter: grayscale(1) brightness(1.2); opacity: .9; }
 
-    /* ===================== */
-    /* MODE WIREFRAME (toggle) */
-    /* ===================== */
     body.wireframe * { outline: 1px dashed #8b5cf6; outline-offset: -1px; }
     body.wireframe [data-wf] { position: relative; }
     body.wireframe [data-wf]::after {
@@ -81,19 +76,18 @@
       opacity: .9; pointer-events: none;
     }
 
-    /* On étiquette les zones clés */
-    header      { position: sticky; }
-    header .header-container { position: relative; }
-    header .header-container { counter-reset: block; }
-
-    /* Accessibilité focus */
     :focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; border-radius: 6px; }
 
-    /* Petits écrans: le bouton wireframe passe à gauche du burger */
     .actions-inline { display: inline-flex; align-items: center; gap: .5rem; }
-
-    /* Améliore l'affichage des sections en wireframe */
     section, nav, header, footer, main, article, form, ul, li, .carousel, .carousel-slide, .features, .site-footer nav, .social-links { border-radius: 12px; }
+
+    /* Mode sombre / clair */
+    body.dark-mode { background: #0b1220; color: #e5e7eb; }
+    body.dark-mode .hero p { color: #cbd5e1; }
+    body.dark-mode .features article { background: #1f2937; border-color: #374151; }
+    body.dark-mode .carousel-container { background: #111827; border-color: #1f2937; }
+    body.dark-mode .side-menu { background: #111827; color: #e5e7eb; }
+    body.dark-mode .side-menu input, body.dark-mode .side-menu button { background: #1f2937; color: #e5e7eb; border-color: #374151; }
   </style>
 </head>
 <body>
@@ -106,10 +100,14 @@
       <span>CryptoMentor</span>
     </a>
 
-    <!-- Actions: Wireframe + Hamburger -->
+    <!-- Actions: Wireframe + Hamburger + Thème -->
     <div class="actions-inline" data-wf="Actions">
       <button id="wireframe-toggle" aria-pressed="false" aria-label="Basculer le mode wireframe" title="Wireframe">
         <i class="fa-solid fa-border-all"></i>
+      </button>
+
+      <button id="theme-toggle" aria-label="Changer le mode clair/sombre" title="Mode clair/sombre">
+        <i class="fas fa-moon"></i>
       </button>
 
       <input type="checkbox" id="menu-toggle" aria-label="Ouvrir/fermer le menu" />
@@ -128,19 +126,16 @@
         <li><a href="#guide">Débuter</a></li>
       </ul>
 
-      <!-- Recherche -->
       <form class="search-form" role="search" aria-label="Recherche crypto" data-wf="Recherche">
         <input type="search" id="search-input" name="search" placeholder="Rechercher une crypto…" aria-label="Rechercher une cryptomonnaie" autocomplete="off" />
         <button type="submit" aria-label="Lancer la recherche"><i class="fas fa-search"></i></button>
       </form>
-
-      <!-- Thème (placeholder) -->
-      <button id="theme-toggle" aria-label="Changer le mode clair/sombre" title="Changer le mode clair/sombre" data-wf="Thème">
-        <i class="fas fa-moon"></i>
-      </button>
     </nav>
   </div>
 </header>
+
+<main data-wf="Main">
+  <section class="hero container" aria-label="Présentation CryptoMentor" data-wf="Hero
 
 <main data-wf="Main">
   <section class="hero container" aria-label="Présentation CryptoMentor" data-wf="Hero">
