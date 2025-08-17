@@ -38,3 +38,28 @@ window.addEventListener('resize', () => {
     carouselSlide.style.transform = `translateX(${-size * counter}px)`;
   }
 });
+const carouselSlide = document.querySelector('.carousel-slide');
+const carouselImages = Array.from(document.querySelectorAll('.carousel-slide img'));
+
+// Clone images pour un effet infini
+carouselImages.forEach(img => {
+  const clone = img.cloneNode(true);
+  carouselSlide.appendChild(clone);
+});
+
+let counter = 0;
+const total = carouselSlide.children.length;
+const speed = 2; // vitesse en pixels par frame
+
+function animateCarousel() {
+  counter += speed;
+  if(counter >= carouselSlide.scrollWidth / 2){
+    counter = 0; // reset pour effet infini
+  }
+  carouselSlide.style.transform = `translateX(${-counter}px)`;
+  requestAnimationFrame(animateCarousel);
+}
+
+animateCarousel();
+
+
