@@ -1,131 +1,111 @@
-
-/* --- Mode Wireframe Avancé --- */
-body.wireframe {
-  background: #f5f5f5;
-  color: #111;
+/* --- Style global --- */
+body {
+  margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+}
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+
+/* Header */
+header {
+  background: #1e1e2f;
+  color: white;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo { display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.5rem; }
+header .logo img { height: 40px; width: 40px; border-radius: 50%; }
+nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+nav li a { color: white; font-weight: 500; }
+
+/* Wireframe buttons */
+.wireframe-buttons { display:flex; gap:0.5rem; }
+.wireframe-buttons button {
+  background: #333; color:white; border:none; padding:0.5rem; cursor:pointer;
+  border-radius:5px;
+}
+.wireframe-buttons button:hover { background:#555; }
+
+/* Hamburger menu */
+#menu-toggle { display: none; }
+.menu-icon { display: none; cursor: pointer; font-size: 1.5rem; }
+@media (max-width: 768px){
+  nav ul { display: none; flex-direction: column; background: #2e2e40; position: absolute; top: 70px; left: 0; width: 100%; padding: 1rem 0; }
+  #menu-toggle:checked + label + nav ul { display: flex; }
+  .menu-icon { display: block; color: white; }
 }
 
-/* Supprime toutes les images et remplace par des blocs */
-body.wireframe img {
-  display: block;
-  width: 100%;
-  height: 100px;
-  background: #ccc;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-/* Encadre et espace les sections principales */
-body.wireframe header,
-body.wireframe footer,
-body.wireframe section,
-body.wireframe nav,
-body.wireframe article,
-body.wireframe .container {
-  background: #e0e0e0;
-  border: 2px solid #999;
-  border-radius: 6px;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-}
-
-/* Titres simulés */
-body.wireframe h1,
-body.wireframe h2,
-body.wireframe h3 {
-  background: #bbb;
-  color: transparent;
-  border-radius: 4px;
-}
-
-/* Paragraphes simulés */
-body.wireframe p,
-body.wireframe li {
-  background: #ddd;
-  color: transparent;
-  border-radius: 4px;
-  height: 1rem;
-  margin: 0.5rem 0;
-}
-
-/* Menu et boutons */
-body.wireframe .menu-icon,
-body.wireframe .btn-highlight,
-body.wireframe .btn-small,
-body.wireframe #theme-toggle,
-body.wireframe form button {
-  background: #bbb;
-  border: 2px solid #999;
-  border-radius: 4px;
-  color: transparent;
+/* Hero */
+.hero {
   text-align: center;
-  cursor: pointer;
-  display: inline-block;
-  height: 2rem;
-  width: auto;
-  padding: 0 1rem;
+  padding: 3rem 1rem;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
 }
+.hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; }
 
-/* Formulaire recherche */
-body.wireframe input[type="search"] {
-  background: #ccc;
-  border: 2px solid #999;
-  color: transparent;
-  border-radius: 4px;
-  padding: 0.5rem;
-  width: 80%;
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
 }
+.features article {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.features article:hover { transform: translateY(-5px); }
+.features i { color: #2575fc; margin-bottom: 1rem; }
 
 /* Carousel */
-/* Wireframe carousel défilant */
-body.wireframe .carousel-slide {
-  display: flex;
-  gap: 0.5rem;
-  animation: scroll-carousel 10s linear infinite;
-}
+.carousel-container { overflow: hidden; margin: 2rem 0; }
+.carousel-slide { display: flex; gap: 1rem; transition: transform 0.5s ease; }
+.carousel-slide img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; }
 
-body.wireframe .carousel-slide img {
-  flex: 0 0 auto; /* ne pas rétrécir ni grandir */
-  width: 150px;    /* largeur fixe pour le wireframe */
+/* Buttons */
+.btn-highlight { background: #2575fc; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; font-weight: bold; }
+.btn-small { background: #e0e0e0; padding: 0.5rem 1rem; border-radius: 5px; }
+
+.bottom-auth-buttons { display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; }
+
+/* Footer */
+footer { background: #1e1e2f; color: white; padding: 2rem 1rem; text-align: center; }
+footer nav a { margin: 0 0.5rem; color: #aaa; }
+.social-links a img { width: 30px; margin: 0 0.3rem; }
+
+/* --- Wireframe 1 : simple contours --- */
+body.wireframe1 * {
+  background: #ddd !important;
+  color: transparent !important;
+  border: 2px solid #999 !important;
+  box-shadow: none !important;
+}
+body.wireframe1 img { height: 80px; object-fit: cover; }
+
+/* --- Wireframe 2 : style grille avec placeholders --- */
+body.wireframe2 * {
+  background: repeating-linear-gradient(
+    45deg,
+    #e0e0e0,
+    #e0e0e0 10px,
+    #cfcfcf 10px,
+    #cfcfcf 20px
+  ) !important;
+  color: transparent !important;
+  border: 1px dashed #666 !important;
+}
+body.wireframe2 img {
+  background: #bbb !important;
+  border: 2px dashed #444 !important;
   height: 80px;
-  object-fit: cover;
 }
-
-/* Animation du défilement */
-@keyframes scroll-carousel {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-body.wireframe .carousel-slide img {
-  flex: 1;
-  height: 80px;
-}
-
-/* Liens et footer */
-body.wireframe a {
-  color: transparent;
-  text-decoration: none;
-}
-
-/* Icônes simplifiées */
-body.wireframe i {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background: #bbb;
-  border-radius: 50%;
-  color: transparent;
-  text-align: center;
-  line-height: 30px;
-}
-
-
-
