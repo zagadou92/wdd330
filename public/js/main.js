@@ -461,4 +461,68 @@ backdrop.addEventListener("click", () => {
     }
   });
 })();
+// js/main.js
+
+// Simulation de données (peut être remplacée par une API plus tard)
+const newsData = [
+  {
+    date: "17/08",
+    title: "🚀 Binance lance une carte crypto en Europe",
+    content: "Les utilisateurs européens pourront désormais payer en magasin avec leur solde crypto directement via une carte Mastercard liée à Binance."
+  },
+  {
+    date: "16/08",
+    title: "💰 Solana dépasse les 100 $",
+    content: "Solana continue de surprendre en franchissant un seuil symbolique grâce à l'intérêt croissant des investisseurs institutionnels."
+  },
+  {
+    date: "15/08",
+    title: "⚡ Lightning Network en expansion",
+    content: "Plus de 5000 nouveaux nœuds actifs rejoignent le réseau Lightning, rendant les paiements Bitcoin plus rapides et moins chers."
+  }
+];
+
+// Sélection du conteneur
+const newsFeed = document.getElementById("news-feed");
+
+// Injection dynamique
+function loadNews() {
+  newsData.forEach(article => {
+    const newsItem = document.createElement("article");
+    newsItem.classList.add("news-item");
+
+    newsItem.innerHTML = `
+      <h3>${article.title} <span class="date">[${article.date}]</span></h3>
+      <p>${article.content}</p>
+    `;
+
+    // Animation simple (apparition progressive)
+    newsItem.style.opacity = "0";
+    newsFeed.appendChild(newsItem);
+
+    setTimeout(() => {
+      newsItem.style.transition = "opacity 0.8s ease-in";
+      newsItem.style.opacity = "1";
+    }, 100);
+  });
+}
+
+// Ajouter la date du jour en haut
+function displayTodayDate() {
+  const today = new Date();
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = today.toLocaleDateString("fr-FR", options);
+
+  const introSection = document.querySelector(".news-intro");
+  const dateElement = document.createElement("p");
+  dateElement.textContent = `📅 Aujourd'hui : ${formattedDate}`;
+  introSection.appendChild(dateElement);
+}
+
+// Exécution
+document.addEventListener("DOMContentLoaded", () => {
+  displayTodayDate();
+  loadNews();
+});
+
 
