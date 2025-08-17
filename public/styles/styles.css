@@ -1953,6 +1953,43 @@ footer {
   }
 }
 
+.search-results {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 2px;
+  border-radius: 6px;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.85rem;
+}
+
+.search-result-item:hover {
+  background: #f0f0f0;
+}
+
+.search-result-item div {
+  margin-top: 2px;
+  color: #555;
+}
+
+.search-result-item .positive { color: green; }
+.search-result-item .negative { color: red; }
+
+.search-result-item em {
+  font-weight: bold;
+  color: #222;
+}
+
 
 
 
