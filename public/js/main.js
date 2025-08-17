@@ -526,3 +526,130 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Liste de 20 cryptos avec infos détaillées
+const cryptos = [
+  { name: "Bitcoin", symbol: "BTC", price: 70000, marketCap: "1.4T", change24h: 2.5,
+    definition: "Bitcoin est la première crypto-monnaie décentralisée créée par Satoshi Nakamoto.", 
+    advice: "Investissement à long terme, surveiller la volatilité." },
+
+  { name: "Ethereum", symbol: "ETH", price: 4500, marketCap: "540B", change24h: 1.8,
+    definition: "Ethereum est une plateforme de contrats intelligents et dApps.", 
+    advice: "Convient pour diversification et projets DeFi." },
+
+  { name: "Cardano", symbol: "ADA", price: 2.1, marketCap: "70B", change24h: -0.5,
+    definition: "Cardano est une blockchain proof-of-stake avec une approche scientifique.", 
+    advice: "Investir progressivement, potentiel à long terme." },
+
+  { name: "Solana", symbol: "SOL", price: 210, marketCap: "70B", change24h: 3.1,
+    definition: "Solana est une blockchain rapide et scalable pour dApps et NFT.", 
+    advice: "Surveiller la concurrence et la stabilité du réseau." },
+
+  { name: "Binance Coin", symbol: "BNB", price: 500, marketCap: "85B", change24h: 0.9,
+    definition: "BNB est la crypto native de Binance, utilisée pour frais et services.", 
+    advice: "Bonne option pour utilisateurs Binance et réductions de frais." },
+
+  { name: "Ripple", symbol: "XRP", price: 1.1, marketCap: "55B", change24h: -1.2,
+    definition: "Ripple facilite les paiements internationaux rapides et peu coûteux.", 
+    advice: "Surveiller les régulations légales." },
+
+  { name: "Polkadot", symbol: "DOT", price: 35, marketCap: "35B", change24h: 2.0,
+    definition: "Polkadot permet l'interopérabilité entre différentes blockchains.", 
+    advice: "Convient pour projets multi-chaines et staking." },
+
+  { name: "Litecoin", symbol: "LTC", price: 180, marketCap: "12B", change24h: 0.5,
+    definition: "Litecoin est une crypto rapide et légère inspirée de Bitcoin.", 
+    advice: "Utilisation comme monnaie de transaction." },
+
+  { name: "Chainlink", symbol: "LINK", price: 30, marketCap: "14B", change24h: 1.5,
+    definition: "Chainlink fournit des oracles sécurisés pour smart contracts.", 
+    advice: "Investir si intéressé par DeFi et smart contracts." },
+
+  { name: "Dogecoin", symbol: "DOGE", price: 0.25, marketCap: "32B", change24h: -0.8,
+    definition: "Dogecoin est une crypto-monnaie ludique née d’un mème Internet.", 
+    advice: "Volatilité élevée, uniquement pour trading spéculatif." },
+
+  { name: "Shiba Inu", symbol: "SHIB", price: 0.000012, marketCap: "7B", change24h: 4.2,
+    definition: "Shiba Inu est un token inspiré de Dogecoin, communauté active.", 
+    advice: "Très spéculatif, investir avec prudence." },
+
+  { name: "Avalanche", symbol: "AVAX", price: 95, marketCap: "20B", change24h: 2.3,
+    definition: "Avalanche est une blockchain rapide pour dApps et DeFi.", 
+    advice: "Surveiller adoption et projets lancés." },
+
+  { name: "Polygon", symbol: "MATIC", price: 2.4, marketCap: "18B", change24h: 1.1,
+    definition: "Polygon est une solution Layer 2 pour Ethereum.", 
+    advice: "Convient pour scalabilité et frais réduits." },
+
+  { name: "Cosmos", symbol: "ATOM", price: 40, marketCap: "12B", change24h: 1.6,
+    definition: "Cosmos vise à connecter différentes blockchains via IBC.", 
+    advice: "Investir si intéressé par interopérabilité." },
+
+  { name: "VeChain", symbol: "VET", price: 0.08, marketCap: "6B", change24h: 0.9,
+    definition: "VeChain se concentre sur la traçabilité supply chain via blockchain.", 
+    advice: "Bonne option pour projets industriels et logistiques." },
+
+  { name: "Terra", symbol: "LUNA", price: 85, marketCap: "15B", change24h: -0.4,
+    definition: "Terra est une plateforme DeFi avec stablecoins algorithmiques.", 
+    advice: "Suivre la stabilité des stablecoins." },
+
+  { name: "Algorand", symbol: "ALGO", price: 1.7, marketCap: "12B", change24h: 1.2,
+    definition: "Algorand est une blockchain rapide et décentralisée.", 
+    advice: "Investissement long terme, surveiller adoption." },
+
+  { name: "Stellar", symbol: "XLM", price: 0.35, marketCap: "9B", change24h: 0.7,
+    definition: "Stellar facilite les paiements transfrontaliers rapides.", 
+    advice: "Convient aux transferts internationaux et micropaiements." },
+
+  { name: "Uniswap", symbol: "UNI", price: 25, marketCap: "15B", change24h: 2.1,
+    definition: "Uniswap est un DEX sur Ethereum pour échanges de tokens.", 
+    advice: "Intéressant pour trading et DeFi." },
+
+  { name: "Aave", symbol: "AAVE", price: 300, marketCap: "6B", change24h: 1.5,
+    definition: "Aave est un protocole de prêt et emprunt DeFi.", 
+    advice: "Convient aux utilisateurs DeFi et yield farming." }
+];
+
+// Recherche détaillée
+const searchForm = document.getElementById("crypto-search-form");
+const searchInput = document.getElementById("crypto-search-input");
+const searchResults = document.getElementById("crypto-search-results");
+
+function showResults(results) {
+  if (!results.length) {
+    searchResults.innerHTML = "<p>Aucun résultat trouvé</p>";
+    return;
+  }
+  searchResults.innerHTML = results.map(c => `
+    <div class="search-result-item" role="option">
+      <strong>${c.name} (${c.symbol})</strong>
+      <div>Prix : $${c.price.toLocaleString()}</div>
+      <div>Market Cap : ${c.marketCap}</div>
+      <div>Changement 24h : <span class="${c.change24h >= 0 ? 'positive' : 'negative'}">${c.change24h}%</span></div>
+      <div><em>Définition :</em> ${c.definition}</div>
+      <div><em>Conseil :</em> ${c.advice}</div>
+    </div>`).join("");
+}
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+  if (!query) { searchResults.innerHTML = ""; return; }
+  const filtered = cryptos.filter(c => c.name.toLowerCase().includes(query) || c.symbol.toLowerCase().includes(query));
+  showResults(filtered);
+});
+
+searchResults.addEventListener("click", e => {
+  const item = e.target.closest(".search-result-item");
+  if (item) {
+    searchInput.value = item.querySelector("strong").textContent;
+    searchResults.innerHTML = "";
+  }
+});
+
+searchForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const query = searchInput.value.trim();
+  if (query) alert(`Recherche pour : ${query}`);
+});
+
+
+
