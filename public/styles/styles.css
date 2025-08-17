@@ -339,4 +339,63 @@ nav ul li a:hover {
     gap: 10px;
   }
 }
+/* ==========================
+   Carousel
+========================== */
+.carousel-container {
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 15px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .carousel-slide img {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    gap: 10px;
+  }
+  .carousel-slide img {
+    max-width: 150px;
+  }
+}
+
+/* Carousel scrollbar hidden (optional for modern look) */
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+.carousel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
 
