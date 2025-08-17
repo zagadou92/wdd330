@@ -3,91 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Actualités | CryptoMentor</title>
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="styles/wireframe.css" /> <!-- Wireframe séparé -->
+  <title>Actualités Crypto | CryptoMentor</title>
+
   <!-- Font Awesome pour icônes -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Styles -->
+  <style>
+    /* === Mode Wireframe === */
+    body.wireframe * {
+      outline: 1px dashed #e74c3c !important;
+    }
+
+    body.wireframe header::before,
+    body.wireframe main::before,
+    body.wireframe footer::before,
+    body.wireframe article::before {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      padding: 2px 6px;
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border-radius: 3px;
+    }
+    body.wireframe header::before { content: "HEADER"; background: rgba(231, 76, 60, 0.7); }
+    body.wireframe main::before { content: "MAIN"; background: rgba(52, 152, 219, 0.7); }
+    body.wireframe footer::before { content: "FOOTER"; background: rgba(46, 204, 113, 0.7); }
+    body.wireframe article::before { content: "ARTICLE"; background: rgba(241, 196, 15, 0.7); }
+
+    /* Bouton Wireframe Toggle */
+    .wireframe-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .wireframe-toggle:hover {
+      background: #555;
+    }
+
+    /* Styles principaux */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f6fa;
+      color: #222;
+    }
+
+    header {
+      background: #1e272e;
+      color: #fff;
+      padding: 1rem 0;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ffd32a;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem 0;
+    }
+
+    .news-intro {
+      margin-bottom: 1.5rem;
+    }
+
+    .news-feed {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .news-item {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .news-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .news-item h3 {
+      margin: 0 0 0.5rem;
+    }
+
+    footer {
+      background: #1e272e;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body class="wireframe"> <!-- active le wireframe -->
+<body class="wireframe">
+
+  <button class="wireframe-toggle" aria-label="Activer/Désactiver Wireframe">
+    <i class="fas fa-border-all"></i> Wireframe
+  </button>
 
   <header>
-    <h1>📰 Actualités Crypto</h1>
-    <a href="index.html" class="back-home"><i class="fas fa-home"></i> Retour à l’accueil</a>
+    <div class="container">
+      <h1><i class="fa-solid fa-newspaper"></i> CryptoMentor</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="convertisseur.html">Convertisseur</a></li>
+          <li><a href="glossaire.html">Glossaire</a></li>
+          <li><a href="actualites.html" class="active">Actualités</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
     <section class="news-intro">
-      <p>📢 Voici les dernières nouvelles du marché des cryptomonnaies :</p>
+      <h2>📰 Dernières actualités crypto</h2>
+      <p>Restez informé(e) des dernières tendances et annonces importantes du marché des cryptomonnaies.</p>
     </section>
 
     <section class="news-feed" id="news-feed">
       <article class="news-item">
         <h3>📈 [27/07] Le Bitcoin franchit les 70 000 $</h3>
         <p>
-          Le BTC poursuit sa montée en puissance, porté par les décisions favorables des institutions américaines et l'enthousiasme du marché asiatique.
+          Le Bitcoin continue sa montée historique et franchit la barre symbolique des 70 000 $. Ce rallye est soutenu par l'intérêt croissant des institutions financières américaines et par l'enthousiasme du marché asiatique. Les analystes estiment que la combinaison d'une adoption institutionnelle et d'une demande accrue pourrait propulser le BTC vers de nouveaux sommets dans les prochains mois. Les investisseurs sont également attentifs aux décisions réglementaires qui pourraient influencer la volatilité de la crypto.
         </p>
       </article>
 
       <article class="news-item">
         <h3>🔄 [26/07] Ethereum 2.0 : la phase finale est lancée</h3>
         <p>
-          La mise à jour d’Ethereum entre dans sa phase finale, promettant des frais réduits, plus de sécurité et une consommation énergétique minimale.
+          Ethereum franchit une étape majeure avec le lancement de la phase finale d’Ethereum 2.0. Cette mise à jour vise à réduire significativement les frais de transaction, améliorer la sécurité et diminuer la consommation énergétique grâce à la transition vers le proof-of-stake. Les développeurs espèrent que cette évolution renforcera la confiance des investisseurs et stimulera l’adoption des applications décentralisées (dApps) et des projets DeFi sur la blockchain Ethereum.
         </p>
       </article>
 
       <article class="news-item">
         <h3>🌍 [25/07] Le Nigeria adopte une stratégie blockchain nationale</h3>
         <p>
-          Le gouvernement nigérian officialise une politique blockchain pour stimuler l’adoption des cryptoactifs et renforcer la transparence financière.
+          Le gouvernement nigérian a annoncé la mise en place d'une stratégie blockchain nationale afin de stimuler l’adoption des cryptoactifs et de renforcer la transparence financière. Cette politique inclut des initiatives pour l’éducation sur les technologies décentralisées, des incitations aux start-ups blockchain et la réglementation des échanges de cryptomonnaies. Les experts voient cela comme un pas important vers la modernisation du système financier et l’intégration de l’économie numérique en Afrique.
         </p>
       </article>
 
       <article class="news-item">
         <h3>💳 [24/07] Mastercard teste les paiements crypto en Afrique</h3>
         <p>
-          Mastercard s’associe à des start-ups pour intégrer des solutions de paiements crypto dans plusieurs pays africains, dont la Côte d’Ivoire.
+          Mastercard expérimente de nouvelles solutions de paiements en cryptomonnaies en partenariat avec plusieurs start-ups africaines. Ces tests ont lieu dans différents pays, dont la Côte d’Ivoire, et permettent aux consommateurs et commerçants d’effectuer des transactions rapides et sécurisées en crypto. Cette initiative pourrait accélérer l’adoption des monnaies numériques dans la région et renforcer l’inclusion financière pour les populations non bancarisées.
         </p>
       </article>
     </section>
   </main>
 
-  <footer role="contentinfo" class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-copy" aria-label="Droits d'auteur">
-        &copy; 2025 CryptoMentor. Tous droits réservés.
-      </p>
-
-      <nav aria-label="Liens de pied de page" class="footer-nav">
-        <ul>
-          <li><a href="privacy.html" rel="noopener noreferrer">Politique de confidentialité</a></li>
-          <li><a href="terms.html" rel="noopener noreferrer">Conditions d’utilisation</a></li>
-          <li><a href="contact.html" rel="noopener noreferrer">Contact</a></li>
-          <li><a href="support.html" rel="noopener noreferrer">Support</a></li>
-        </ul>
-      </nav>
-
-      <div class="footer-social" aria-label="Suivez-nous sur les réseaux sociaux">
-        <a href="https://facebook.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <img src="images/facebook-2935402_1280.png" alt="Logo Facebook" />
-        </a>
-        <a href="https://twitter.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <img src="images/twitter-3000965_640.png" alt="Logo Twitter" />
-        </a>
-        <a href="https://instagram.com/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="images/instagram-3814080_640.png" alt="Logo Instagram" />
-        </a>
-        <a href="https://linkedin.com/company/cryptomentor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="images/linkedin-2935407_1280.png" alt="Logo LinkedIn" />
-        </a>
-      </div>
-    </div>
+  <footer>
+    <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    // Toggle Wireframe
+    document.querySelector(".wireframe-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("wireframe");
+    });
+
+    // Animation d'apparition progressive des articles
+    document.addEventListener("DOMContentLoaded", () => {
+      const articles = document.querySelectorAll(".news-item");
+      articles.forEach((article, index) => {
+        setTimeout(() => {
+          article.classList.add("visible");
+        }, index * 300);
+      });
+    });
+  </script>
 </body>
 </html>
