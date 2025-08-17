@@ -345,3 +345,120 @@ backdrop.addEventListener("click", () => {
   menuIcon.classList.remove("fa-times");
   menuIcon.classList.add("fa-bars");
 });
+
+
+// --- Recherche Crypto avec CoinCap API ---
+(() => {
+  const API_BASE = 'https://api.coincap.io/v2';
+
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const input = $('#crypto-search-input');
+  const form = $('#crypto-search-form');
+  const resultsBox = $('#crypto-search-results');
+  const quickView = $('#crypto-quick-view');
+
+  if (!input || !form || !resultsBox || !quickView) return;
+
+  // Debounce
+  const debounce = (fn, ms=300) => {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), ms);
+    };
+  };
+
+  // Rendu résultats
+  function renderResults(list) {
+    if (!list || list.length === 0) {
+      resultsBox.innerHTML = `<div class="search-result-item">Aucun résultat</div>`;
+      resultsBox.style.display = 'block';
+      return;
+    }
+
+    resultsBox.innerHTML = list.map(asset => {
+      const price = Number(asset.priceUsd || 0);
+      const change = Number(asset.changePercent24Hr || 0);
+      const changeClass = change >= 0 ? 'pos' : 'neg';
+      return `
+        <div class="search-result-item" data-id="${asset.id}">
+          <div>
+            <span class="result-name">${asset.name}</span>
+            <span class="result-symbol">(${asset.symbol})</span>
+          </div>
+          <div class="result-price">$${price.toLocaleString(undefined,{maximumFractionDigits:8})}</div>
+          <div class="result-change ${changeClass}">${change.toFixed(2)}%</div>
+        </div>
+      `;
+    }).join('');
+    resultsBox.style.display = 'block';
+  }
+
+  // Recherche API
+  async function searchAssets(q) {
+    if (!q || q.trim().length < 2) {
+      resultsBox.style.display = 'none';
+      return;
+    }
+    try {
+      const url = `${API_BASE}/assets?limit=10&search=${encodeURIComponent(q.trim())}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      renderResults(data.data || []);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // Vue rapide
+  async function loadQuickView(assetId) {
+    try {
+      const res = await fetch(`${API_BASE}/assets/${assetId}`);
+      const { data: a } = await res.json();
+      if (!a) return;
+
+      quickView.innerHTML = `
+        <h3>${a.name} <small>(${a.symbol})</small></h3>
+        <p>Prix: <strong>$${Number(a.priceUsd||0).toLocaleString(undefined,{maximumFractionDigits:8})}</strong></p>
+        <p>Rang: #${a.rank}</p>
+        <p>Cap. boursière: $${Number(a.marketCapUsd||0).toLocaleString()}</p>
+        <p>Volume 24h: $${Number(a.volumeUsd24Hr||0).toLocaleString()}</p>
+        <p>Variation 24h: 
+          <strong style="color:${Number(a.changePercent24Hr)>=0 ? '#16a34a' : '#dc2626'}">
+            ${Number(a.changePercent24Hr||0).toFixed(2)}%
+          </strong>
+        </p>
+        <p><a href="https://coincap.io/assets/${a.id}" target="_blank">Voir sur CoinCap ↗</a></p>
+      `;
+      quickView.style.display = 'block';
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // Événements
+  input.addEventListener('input', debounce(e => searchAssets(e.target.value), 300));
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const first = resultsBox.querySelector('.search-result-item[data-id]');
+    if (first) {
+      loadQuickView(first.dataset.id);
+      resultsBox.style.display = 'none';
+    }
+  });
+
+  resultsBox.addEventListener('click', e => {
+    const item = e.target.closest('.search-result-item[data-id]');
+    if (!item) return;
+    loadQuickView(item.dataset.id);
+    resultsBox.style.display = 'none';
+  });
+
+  document.addEventListener('click', e => {
+    if (!resultsBox.contains(e.target) && e.target !== input) {
+      resultsBox.style.display = 'none';
+    }
+  });
+})();
+
