@@ -5,97 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CryptoMentor – Suivez les cryptomonnaies en temps réel</title>
   <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   
-  <style>
-    /* --- Style global --- */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f9f9f9;
-      color: #222;
-    }
-    a { text-decoration: none; color: inherit; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
-
-    /* Header */
-    header {
-      background: #1e1e2f;
-      color: white;
-      padding: 1rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header .logo { display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.5rem; }
-    header .logo img { height: 40px; width: 40px; border-radius: 50%; }
-    nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
-    nav li a { color: white; font-weight: 500; }
-
-    /* Hamburger menu */
-    #menu-toggle { display: none; }
-    .menu-icon { display: none; cursor: pointer; font-size: 1.5rem; }
-    @media (max-width: 768px){
-      nav ul { display: none; flex-direction: column; background: #2e2e40; position: absolute; top: 70px; left: 0; width: 100%; padding: 1rem 0; }
-      #menu-toggle:checked + label + nav ul { display: flex; }
-      .menu-icon { display: block; color: white; }
-    }
-
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: white;
-    }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.2rem; }
-
-    /* Features */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .features article {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .features article:hover { transform: translateY(-5px); }
-    .features i { color: #2575fc; margin-bottom: 1rem; }
-
-    /* Carousel */
-    .carousel-container { overflow: hidden; margin: 2rem 0; }
-    .carousel-slide { display: flex; gap: 1rem; transition: transform 0.5s ease; }
-    .carousel-slide img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; }
-
-    /* Buttons */
-    .btn-highlight { background: #2575fc; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; font-weight: bold; }
-    .btn-small { background: #e0e0e0; padding: 0.5rem 1rem; border-radius: 5px; }
-
-    .bottom-auth-buttons { display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; }
-
-    /* Footer */
-    footer { background: #1e1e2f; color: white; padding: 2rem 1rem; text-align: center; }
-    footer nav a { margin: 0 0.5rem; color: #aaa; }
-    .social-links a img { width: 30px; margin: 0 0.3rem; }
-
-    /* Wireframe */
-    body.wireframe * {
-      background: #ddd !important;
-      color: transparent !important;
-      border: 2px solid #999 !important;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.1) !important;
-    }
-    body.wireframe img { height: 80px; object-fit: cover; }
-    body.wireframe i, body.wireframe button, body.wireframe a { color: transparent !important; }
-  </style>
+  <!-- Feuille de style externe -->
+  <link rel="stylesheet" href="styles/styles.css" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
 
@@ -114,12 +29,16 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="convert.html">Convertisseur</a></li>
         <li><a href="glossary.html">Glossaire</a></li>
-        <li><a href="news.html">news</a></li>
-        <li><a href="guide.html">guide</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="guide.html">Guide</a></li>
       </ul>
     </nav>
 
-    <button id="wireframe-toggle" title="Wireframe"><i class="fas fa-border-all"></i></button>
+    <!-- Boutons Wireframe -->
+    <div class="wireframe-buttons">
+      <button id="wireframe1-toggle" title="Wireframe 1"><i class="fas fa-border-all"></i></button>
+      <button id="wireframe2-toggle" title="Wireframe 2"><i class="fas fa-th"></i></button>
+    </div>
   </div>
 </header>
 
@@ -180,69 +99,6 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-<script>
- // --- Wireframe Toggle ---
-const btnWireframe = document.getElementById('wireframe-toggle');
-btnWireframe.addEventListener('click', () => {
-  document.body.classList.toggle('wireframe');
-});
-
-// --- Theme Toggle (clair/sombre) ---
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn?.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  if(document.body.classList.contains('dark-theme')){
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-});
-
-// Charger le thème enregistré
-if(localStorage.getItem('theme') === 'dark'){
-  document.body.classList.add('dark-theme');
-}
-
-// --- Menu Hamburger ---
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.querySelector('nav ul');
-menuToggle?.addEventListener('change', () => {
-  if(menuToggle.checked){
-    navMenu.style.display = 'flex';
-  } else {
-    navMenu.style.display = '';
-  }
-});
-
-// --- Carousel ---
-const carouselSlide = document.querySelector('.carousel-slide');
-const carouselImages = document.querySelectorAll('.carousel-slide img');
-
-let counter = 0;
-const size = carouselImages[0].clientWidth;
-
-function moveCarousel() {
-  if(!carouselSlide) return;
-  counter++;
-  if(counter >= carouselImages.length){
-    counter = 0;
-  }
-  carouselSlide.style.transform = `translateX(${-size * counter}px)`;
-}
-
-// Auto-play carousel toutes les 3 secondes
-setInterval(moveCarousel, 3000);
-
-// Ajustement responsive
-window.addEventListener('resize', () => {
-  if(carouselImages.length){
-    const newSize = carouselImages[0].clientWidth;
-    carouselSlide.style.transform = `translateX(${-newSize * counter}px)`;
-  }
-});
-
-  });
-</script>
 <script src="js/main.js"></script>
 <script type="module" src="js/java.js"></script>
 
