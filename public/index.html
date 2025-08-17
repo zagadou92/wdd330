@@ -44,10 +44,9 @@
       <div id="crypto-search-results" class="search-results" role="listbox" aria-label="Résultats de recherche"></div>
     </div>
 
-    <!-- Boutons Wireframe -->
+    <!-- Bouton Wireframe -->
     <div class="wireframe-buttons">
-      <button id="wireframe1-toggle" title="Wireframe 1"><i class="fas fa-border-all"></i></button>
-      <button id="wireframe2-toggle" title="Wireframe 2"><i class="fas fa-th"></i></button>
+      <button id="wireframe-toggle" title="Wireframe"><i class="fas fa-border-all"></i></button>
     </div>
   </div>
 </header>
@@ -90,12 +89,7 @@
     <a href="inscription.html" class="btn-highlight">Inscription</a>
     <a href="connexion.html" class="btn-small">Connexion</a>
   </div>
-
- 
-
-  
 </main>
-
 
 <footer>
   <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
@@ -114,10 +108,16 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/java.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-
+<script>
+  // Toggle Wireframe
+  const wireframeBtn = document.getElementById('wireframe-toggle');
+  wireframeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('wireframe');
+  });
+</script>
 
 </body>
 </html>
