@@ -79,10 +79,30 @@ body.wireframe input[type="search"] {
 }
 
 /* Carousel */
+/* Wireframe carousel défilant */
 body.wireframe .carousel-slide {
   display: flex;
   gap: 0.5rem;
+  animation: scroll-carousel 10s linear infinite;
 }
+
+body.wireframe .carousel-slide img {
+  flex: 0 0 auto; /* ne pas rétrécir ni grandir */
+  width: 150px;    /* largeur fixe pour le wireframe */
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Animation du défilement */
+@keyframes scroll-carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 
 body.wireframe .carousel-slide img {
   flex: 1;
@@ -106,5 +126,6 @@ body.wireframe i {
   text-align: center;
   line-height: 30px;
 }
+
 
 
