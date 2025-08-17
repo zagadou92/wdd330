@@ -1705,5 +1705,121 @@ body.wireframe [data-wf]::after {
 }
 
 
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* --- HEADER --- */
+header {
+  background: #111827;
+  color: #fff;
+  padding: 1rem;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* --- Searchbar --- */
+.searchbar {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 1rem;
+}
+
+#crypto-search-form {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+#crypto-search-input {
+  flex: 1;
+  padding: .6rem .8rem;
+  border: 1px solid #e2e8f0;
+  border-radius: .75rem;
+  outline: none;
+}
+
+#crypto-search-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+}
+
+#crypto-search-form button {
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  padding: .6rem .8rem;
+  border-radius: .75rem;
+  cursor: pointer;
+}
+
+/* Résultats */
+.search-results {
+  position: absolute;
+  top: calc(100% + .4rem);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: .75rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
+  z-index: 50;
+  max-height: 60vh;
+  overflow: auto;
+  display: none;
+}
+
+.search-result-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: .6rem;
+  align-items: center;
+  padding: .6rem .8rem;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: #f9fafb; }
+.result-name { font-weight: 600; }
+.result-symbol { opacity: .7; margin-left: .25rem; }
+.result-price { font-variant-numeric: tabular-nums; }
+.result-change.pos { color: #16a34a; }
+.result-change.neg { color: #dc2626; }
+
+/* Résumé rapide */
+#crypto-quick-view {
+  margin: 1.5rem auto;
+  padding: 1rem;
+  max-width: 600px;
+  border: 1px solid #e5e7eb;
+  border-radius: .75rem;
+  background: #fff;
+  display: none;
+}
+
+
+
 
 
