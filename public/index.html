@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CryptoMentor – Suivez les cryptomonnaies en temps réel</title>
   <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
-  
-  <!-- Feuille de style externe -->
+
+  <!-- Feuille de style -->
   <link rel="stylesheet" href="styles/styles.css" />
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 </head>
@@ -21,17 +21,28 @@
       <span>CryptoMentor</span>
     </a>
 
-    <!-- ✅ MENU NORMAL SANS HAMBURGER -->
+    <!-- ✅ MENU -->
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="about.html">about</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="convert.html">Convertisseur</a></li>
         <li><a href="glossary.html">Glossaire</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="guide.html">Guide</a></li>
       </ul>
     </nav>
+
+    <!-- ✅ BARRE DE RECHERCHE CRYPTO -->
+    <div class="searchbar">
+      <form id="crypto-search-form" role="search" aria-label="Recherche de cryptomonnaies" autocomplete="off">
+        <input id="crypto-search-input" type="search" placeholder="Rechercher une crypto (ex: bitcoin, eth)..." aria-label="Rechercher une crypto" />
+        <button type="submit" aria-label="Lancer la recherche">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="crypto-search-results" class="search-results" role="listbox" aria-label="Résultats de recherche"></div>
+    </div>
 
     <!-- Boutons Wireframe -->
     <div class="wireframe-buttons">
@@ -79,6 +90,9 @@
     <a href="inscription.html" class="btn-highlight">Inscription</a>
     <a href="connexion.html" class="btn-small">Connexion</a>
   </div>
+
+  <!-- Résumé rapide crypto -->
+  <div id="crypto-quick-view"></div>
 </main>
 
 <footer>
@@ -97,9 +111,9 @@
   </div>
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script src="js/main.js"></script>
-<script type="module" src="js/java.js"></script>
 
 </body>
 </html>
