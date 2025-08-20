@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryptoMentor – Marché</title>
+  <meta name="description" content="Espace de vente et d’échange entre vendeurs et acheteurs sur CryptoMentor." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: #1e293b; color: #fff; padding: 15px; }
+    header nav ul { list-style: none; display: flex; gap: 15px; }
+    header nav a { color: #fff; text-decoration: none; }
+
+    main { padding: 20px; }
+    .market-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 20px; 
+    }
+    .offer-card {
+      background: #fff; 
+      border-radius: 10px; 
+      padding: 15px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+    }
+    .offer-card img { width: 100%; border-radius: 8px; }
+    .offer-card h2 { margin: 10px 0 5px; font-size: 18px; }
+    .offer-card p { font-size: 14px; color: #555; }
+    .offer-card .price { font-weight: bold; font-size: 16px; color: #2b7a2b; }
+    .offer-card .actions { margin-top: 10px; display: flex; gap: 10px; }
+    .btn { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .btn-buy { background: #2563eb; color: #fff; }
+    .btn-offer { background: #f59e0b; color: #fff; }
+    .btn-chat { background: #10b981; color: #fff; }
+
+    footer { background: #1e293b; color: #fff; text-align: center; padding: 15px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-container">
+    <a href="index.html" class="logo">
+      <span style="font-weight: bold;">CryptoMentor</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="vente.html">Boutique</a></li>
+        <li><a href="marche.html" class="active">Marché</a></li>
+        <li><a href="guide.html">Guide</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Marché des Offres</h1>
+  <p>Découvrez les propositions des vendeurs et échangez directement avec eux.</p>
+
+  <section class="market-grid">
+    <!-- Offre 1 -->
+    <article class="offer-card">
+      <img src="images/bitcoin.jpg" alt="Vente Bitcoin">
+      <h2>Vente de Bitcoin</h2>
+      <p>Vendeur : Alice</p>
+      <span class="price">0.05 BTC (≈ 1500 €)</span>
+      <div class="actions">
+        <button class="btn btn-buy">Acheter</button>
+        <button class="btn btn-offer">Faire une offre</button>
+        <button class="btn btn-chat">Chat</button>
+      </div>
+    </article>
+
+    <!-- Offre 2 -->
+    <article class="offer-card">
+      <img src="images/ethereum.jpg" alt="Vente Ethereum">
+      <h2>Ethereum à vendre</h2>
+      <p>Vendeur : Karim</p>
+      <span class="price">2 ETH (≈ 6000 €)</span>
+      <div class="actions">
+        <button class="btn btn-buy">Acheter</button>
+        <button class="btn btn-offer">Faire une offre</button>
+        <button class="btn btn-chat">Chat</button>
+      </div>
+    </article>
+
+    <!-- Offre 3 -->
+    <article class="offer-card">
+      <img src="images/service.jpg" alt="Service crypto">
+      <h2>Consulting Crypto</h2>
+      <p>Vendeur : Sophie</p>
+      <span class="price">100 €/heure</span>
+      <div class="actions">
+        <button class="btn btn-buy">Réserver</button>
+        <button class="btn btn-offer">Proposer un tarif</button>
+        <button class="btn btn-chat">Chat</button>
+      </div>
+    </article>
+
+    <!-- Offre 4 -->
+    <article class="offer-card">
+      <img src="images/nft.jpg" alt="NFT">
+      <h2>Vente NFT unique</h2>
+      <p>Vendeur : David</p>
+      <span class="price">0.2 ETH (≈ 600 €)</span>
+      <div class="actions">
+        <button class="btn btn-buy">Acheter</button>
+        <button class="btn btn-offer">Faire une offre</button>
+        <button class="btn btn-chat">Chat</button>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
