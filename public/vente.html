@@ -32,11 +32,12 @@
     .offer-card h2 { margin: 10px 0 5px; font-size: 18px; }
     .offer-card p { font-size: 14px; color: #555; }
     .offer-card .price { font-weight: bold; font-size: 16px; color: #2b7a2b; }
-    .offer-card .actions { margin-top: 10px; display: flex; gap: 10px; }
+    .offer-card .actions { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
     .btn { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
     .btn-buy { background: #2563eb; color: #fff; }
     .btn-offer { background: #f59e0b; color: #fff; }
     .btn-chat { background: #10b981; color: #fff; }
+    .btn-add { background: #9333ea; color: #fff; margin-bottom: 20px; }
 
     footer { background: #1e293b; color: #fff; text-align: center; padding: 15px; margin-top: 20px; }
 
@@ -70,29 +71,17 @@
       justify-content: space-between;
       align-items: center;
     }
-    .chat-messages {
-      height: 200px;
-      padding: 10px;
-      overflow-y: auto;
-      font-size: 14px;
-    }
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ddd;
-    }
-    .chat-input input {
-      flex: 1;
-      padding: 8px;
-      border: none;
-      outline: none;
-    }
-    .chat-input button {
-      background: #2563eb;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
+    .chat-messages { height: 200px; padding: 10px; overflow-y: auto; font-size: 14px; }
+    .chat-input { display: flex; border-top: 1px solid #ddd; }
+    .chat-input input { flex: 1; padding: 8px; border: none; outline: none; }
+    .chat-input button { background: #2563eb; color: #fff; border: none; padding: 8px 12px; cursor: pointer; }
+
+    /* ✅ Modal Form */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
+    .modal-content { background: #fff; padding: 20px; border-radius: 10px; width: 350px; }
+    .modal-content h2 { margin-top: 0; }
+    .modal-content input { width: 100%; padding: 8px; margin: 8px 0; border-radius: 6px; border: 1px solid #ddd; }
+    .modal-content button { margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -115,34 +104,38 @@
   <h1>Marché des Offres</h1>
   <p>Découvrez les propositions des vendeurs et échangez directement avec eux.</p>
 
-  <section class="market-grid">
-    <!-- Offre 1 -->
+  <!-- ✅ Bouton Ajouter une offre -->
+  <button class="btn btn-add" onclick="openModal()">+ Ajouter une offre</button>
+
+  <section class="market-grid" id="marketGrid">
+    <!-- Exemple d’offre -->
     <article class="offer-card">
       <img src="images/bitcoin.jpg" alt="Vente Bitcoin">
       <h2>Vente de Bitcoin</h2>
       <p>Vendeur : Alice</p>
       <span class="price">0.05 BTC (≈ 1500 €)</span>
+      <div><strong>Paiement :</strong> PayPal, Carte, Crypto</div>
       <div class="actions">
         <button class="btn btn-buy">Acheter</button>
         <button class="btn btn-offer">Faire une offre</button>
         <button class="btn btn-chat" onclick="openChat('Alice')">Chat</button>
       </div>
     </article>
-
-    <!-- Offre 2 -->
-    <article class="offer-card">
-      <img src="images/ethereum.jpg" alt="Vente Ethereum">
-      <h2>Ethereum à vendre</h2>
-      <p>Vendeur : Karim</p>
-      <span class="price">2 ETH (≈ 6000 €)</span>
-      <div class="actions">
-        <button class="btn btn-buy">Acheter</button>
-        <button class="btn btn-offer">Faire une offre</button>
-        <button class="btn btn-chat" onclick="openChat('Karim')">Chat</button>
-      </div>
-    </article>
   </section>
 </main>
+
+<!-- ✅ Modal Form -->
+<div class="modal" id="offerModal">
+  <div class="modal-content">
+    <h2>Nouvelle offre</h2>
+    <input type="text" id="offerTitle" placeholder="Titre de l’offre" required />
+    <input type="text" id="offerSeller" placeholder="Nom du vendeur" required />
+    <input type="text" id="offerPrice" placeholder="Prix (ex: 200 € ou 0.01 BTC)" required />
+    <input type="text" id="offerImage" placeholder="Lien de l’image" />
+    <button class="btn btn-add" onclick="addOffer()">Ajouter</button>
+    <button class="btn btn-offer" onclick="closeModal()">Annuler</button>
+  </div>
+</div>
 
 <!-- ✅ Chat Box -->
 <div class="chat-box" id="chatBox">
@@ -191,12 +184,43 @@
     if (msg === "") return;
     chatMessages.innerHTML += `<p><strong>Vous:</strong> ${msg}</p>`;
     chatInput.value = "";
-
-    // Réponse simulée du vendeur
     setTimeout(() => {
-      chatMessages.innerHTML += `<p><strong>${currentSeller}:</strong> Merci pour votre message, je vous répondrai rapidement !</p>`;
+      chatMessages.innerHTML += `<p><strong>${currentSeller}:</strong> Merci pour votre message !</p>`;
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }, 1000);
+  }
+
+  // Modal form
+  const modal = document.getElementById("offerModal");
+  function openModal() { modal.style.display = "flex"; }
+  function closeModal() { modal.style.display = "none"; }
+
+  // Ajouter une offre
+  function addOffer() {
+    const title = document.getElementById("offerTitle").value;
+    const seller = document.getElementById("offerSeller").value;
+    const price = document.getElementById("offerPrice").value;
+    const img = document.getElementById("offerImage").value || "images/default.jpg";
+
+    if (!title || !seller || !price) { alert("Veuillez remplir tous les champs obligatoires"); return; }
+
+    const marketGrid = document.getElementById("marketGrid");
+    const card = document.createElement("article");
+    card.className = "offer-card";
+    card.innerHTML = `
+      <img src="${img}" alt="${title}">
+      <h2>${title}</h2>
+      <p>Vendeur : ${seller}</p>
+      <span class="price">${price}</span>
+      <div><strong>Paiement :</strong> PayPal, Carte, Crypto</div>
+      <div class="actions">
+        <button class="btn btn-buy">Acheter</button>
+        <button class="btn btn-offer">Faire une offre</button>
+        <button class="btn btn-chat" onclick="openChat('${seller}')">Chat</button>
+      </div>
+    `;
+    marketGrid.appendChild(card);
+    closeModal();
   }
 </script>
 
