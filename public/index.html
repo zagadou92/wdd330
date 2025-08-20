@@ -11,6 +11,88 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ✅ Style du chat */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+    .chat-header {
+      background: #1e293b;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+    .chat-input button {
+      background: #38bdf8;
+      border: none;
+      color: white;
+      padding: 0 15px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .chat-bubble {
+      background: #38bdf8;
+      color: white;
+      border-radius: 20px;
+      padding: 8px 12px;
+      margin: 5px 0;
+      max-width: 80%;
+      align-self: flex-end;
+    }
+    .chat-bubble.bot {
+      background: #ddd;
+      color: #333;
+      align-self: flex-start;
+    }
+    /* ✅ Bouton flottant */
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #38bdf8;
+      color: #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
 
@@ -99,8 +181,72 @@
   </div>
 </footer>
 
+<!-- ✅ Chat Widget -->
+<div class="chat-toggle"><i class="fa fa-comments"></i></div>
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header">
+    Assistance CryptoMentor
+    <span id="closeChat" style="cursor:pointer;">✖</span>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble bot">👋 Bonjour ! Comment puis-je vous aider ?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Écrivez un message..." />
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
+
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+  // ✅ Chat JS
+  const chatToggle = document.querySelector('.chat-toggle');
+  const chatWidget = document.getElementById('chatWidget');
+  const closeChat = document.getElementById('closeChat');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  chatToggle.addEventListener('click', () => {
+    chatWidget.style.display = 'flex';
+    chatToggle.style.display = 'none';
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatWidget.style.display = 'none';
+    chatToggle.style.display = 'flex';
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function sendMessage() {
+    const msg = chatInput.value.trim();
+    if (msg === '') return;
+
+    // Ajouter le message utilisateur
+    const userBubble = document.createElement('div');
+    userBubble.className = 'chat-bubble';
+    userBubble.textContent = msg;
+    chatMessages.appendChild(userBubble);
+
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Réponse automatique simple
+    setTimeout(() => {
+      const botBubble = document.createElement('div');
+      botBubble.className = 'chat-bubble bot';
+      botBubble.textContent = "Merci pour votre message 🙏. Un conseiller vous répondra bientôt.";
+      chatMessages.appendChild(botBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 800);
+  }
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
+
