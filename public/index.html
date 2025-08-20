@@ -1,5 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoMentor – Boutique</title>
+  <meta name="description" content="Découvrez nos produits et services liés aux cryptomonnaies sur la boutique CryptoMentor." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+    header { background:#1e293b; color:#fff; padding:15px; display:flex; justify-content:space-between; align-items:center; }
+    header .logo img { width:50px; vertical-align:middle; border-radius:5px; }
+    header nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
+    header nav a { color:#fff; text-decoration:none; font-weight:bold; }
+    main { padding:20px; max-width:1200px; margin:0 auto; }
+    .hero { text-align:center; margin-bottom:20px; }
+    .products-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+    .product-card { background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; }
+    .product-card img { width:100%; border-radius:8px; }
+    .product-card h2 { margin:10px 0 5px; font-size:18px; }
+    .product-card p { font-size:14px; color:#555; }
+    .product-card .price { font-weight:bold; color:#2b7a2b; font-size:16px; display:block; margin:10px 0; }
+    .btn-highlight { display:inline-block; padding:8px 12px; background:#2563eb; color:#fff; border-radius:6px; text-decoration:none; }
+    
+    /* PUB */
+    .ad-banner { background:#e2e8f0; color:#1e293b; text-align:center; padding:10px; margin:15px 0; border-radius:6px; font-weight:bold; }
+    .ad-sidebar { position:fixed; top:150px; right:10px; width:200px; height:400px; background:#e2e8f0; color:#1e293b; display:flex; align-items:center; justify-content:center; border-radius:6px; font-weight:bold; text-align:center; }
+
+    /* Chat */
+    .chat-widget { position:fixed; bottom:20px; right:20px; width:300px; display:none; flex-direction:column; background:#fff; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); overflow:hidden; }
+    .chat-header { background:#2563eb; color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center; font-weight:bold; }
+    .chat-messages { height:200px; padding:10px; overflow-y:auto; font-size:14px; }
+    .chat-bubble { background:#e2e8f0; padding:6px 10px; border-radius:6px; margin:5px 0; }
+    .chat-bubble.bot { background:#dbeafe; }
+    .chat-input { display:flex; border-top:1px solid #ddd; }
+    .chat-input input { flex:1; padding:8px; border:none; outline:none; }
+    .chat-input button { background:#2563eb; color:#fff; border:none; padding:8px 12px; cursor:pointer; }
+    .chat-toggle { position:fixed; bottom:20px; right:20px; background:#2563eb; color:#fff; padding:12px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:18px; }
+    footer { background:#1e293b; color:#fff; text-align:center; padding:15px; margin-top:20px; }
+    footer nav ul { list-style:none; padding:0; display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+    footer nav a { color:#38bdf8; text-decoration:none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
+    <span>CryptoMentor</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="convert.html">Convertisseur</a></li>
+      <li><a href="glossary.html">Glossaire</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="vente.html" class="active">Boutique</a></li>
+    </ul>
+  </nav>
+</header>
+
 <main class="container">
-  <!-- ✅ PUB bannière top -->
   <div class="ad-banner">Espace Publicitaire (728x90)</div>
 
   <section class="hero">
@@ -8,7 +72,6 @@
   </section>
 
   <section class="products-grid">
-    <!-- Produit 1 -->
     <article class="product-card">
       <img src="images/formation.jpg" alt="Formation crypto" />
       <h2>Formation Débutants</h2>
@@ -17,7 +80,6 @@
       <a href="#" class="btn-highlight">Acheter</a>
     </article>
 
-    <!-- Produit 2 -->
     <article class="product-card">
       <img src="images/analyse.jpg" alt="Analyse crypto" />
       <h2>Analyse Marché Premium</h2>
@@ -26,7 +88,6 @@
       <a href="#" class="btn-highlight">S’abonner</a>
     </article>
 
-    <!-- Produit 3 -->
     <article class="product-card">
       <img src="images/wallet.jpg" alt="Portefeuille crypto" />
       <h2>Portefeuille Sécurisé</h2>
@@ -35,7 +96,6 @@
       <a href="#" class="btn-highlight">Acheter</a>
     </article>
 
-    <!-- Produit 4 -->
     <article class="product-card">
       <img src="images/consulting.jpg" alt="Consulting crypto" />
       <h2>Consulting Privé</h2>
@@ -45,14 +105,12 @@
     </article>
   </section>
 
-  <!-- ✅ PUB bannière bas -->
   <div class="ad-banner">Espace Publicitaire (728x90)</div>
 </main>
 
-<!-- ✅ PUB sidebar -->
 <div class="ad-sidebar">Publicité (200x400)</div>
 
-<!-- ✅ Chat placé avant le footer -->
+<!-- Chat placé avant le footer -->
 <div class="chat-widget" id="chatWidget">
   <div class="chat-header">
     Assistance CryptoMentor
@@ -134,3 +192,5 @@
   }
 </script>
 <script src="js/main.js"></script>
+</body>
+</html>
