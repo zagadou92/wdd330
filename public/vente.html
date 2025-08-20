@@ -7,13 +7,12 @@
   <meta name="description" content="Espace de vente et d’échange entre vendeurs et acheteurs sur CryptoMentor." />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #1e293b; color: #fff; padding: 15px; }
-    header nav ul { list-style: none; display: flex; gap: 15px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; transition: all .3s ease; }
+    header { background: #1e293b; color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    header nav ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
     header nav a { color: #fff; text-decoration: none; }
 
     main { padding: 20px; }
@@ -27,6 +26,7 @@
       border-radius: 10px; 
       padding: 15px; 
       box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+      transition: all .3s ease;
     }
     .offer-card img { width: 100%; border-radius: 8px; }
     .offer-card h2 { margin: 10px 0 5px; font-size: 18px; }
@@ -39,24 +39,76 @@
     .btn-chat { background: #10b981; color: #fff; }
 
     footer { background: #1e293b; color: #fff; text-align: center; padding: 15px; margin-top: 20px; }
+
+    /* ✅ Wireframe Mode */
+    body.wireframe, body.wireframe * {
+      background: none !important;
+      color: black !important;
+      border: 1px solid #333 !important;
+      box-shadow: none !important;
+    }
+
+    /* ✅ Chat Box */
+    .chat-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #2563eb;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-messages {
+      height: 200px;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      outline: none;
+    }
+    .chat-input button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="container header-container">
-    <a href="index.html" class="logo">
-      <span style="font-weight: bold;">CryptoMentor</span>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="vente.html">Boutique</a></li>
-        <li><a href="marche.html" class="active">Marché</a></li>
-        <li><a href="guide.html">Guide</a></li>
-      </ul>
-    </nav>
-  </div>
+  <h2>CryptoMentor – Marché</h2>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="vente.html">Boutique</a></li>
+      <li><a href="marche.html" class="active">Marché</a></li>
+      <li><a href="guide.html">Guide</a></li>
+    </ul>
+  </nav>
+  <!-- ✅ Bouton Wireframe -->
+  <button id="wireframe-toggle" class="btn btn-offer" title="Wireframe"><i class="fas fa-border-all"></i></button>
 </header>
 
 <main>
@@ -73,7 +125,7 @@
       <div class="actions">
         <button class="btn btn-buy">Acheter</button>
         <button class="btn btn-offer">Faire une offre</button>
-        <button class="btn btn-chat">Chat</button>
+        <button class="btn btn-chat" onclick="openChat('Alice')">Chat</button>
       </div>
     </article>
 
@@ -86,41 +138,67 @@
       <div class="actions">
         <button class="btn btn-buy">Acheter</button>
         <button class="btn btn-offer">Faire une offre</button>
-        <button class="btn btn-chat">Chat</button>
-      </div>
-    </article>
-
-    <!-- Offre 3 -->
-    <article class="offer-card">
-      <img src="images/service.jpg" alt="Service crypto">
-      <h2>Consulting Crypto</h2>
-      <p>Vendeur : Sophie</p>
-      <span class="price">100 €/heure</span>
-      <div class="actions">
-        <button class="btn btn-buy">Réserver</button>
-        <button class="btn btn-offer">Proposer un tarif</button>
-        <button class="btn btn-chat">Chat</button>
-      </div>
-    </article>
-
-    <!-- Offre 4 -->
-    <article class="offer-card">
-      <img src="images/nft.jpg" alt="NFT">
-      <h2>Vente NFT unique</h2>
-      <p>Vendeur : David</p>
-      <span class="price">0.2 ETH (≈ 600 €)</span>
-      <div class="actions">
-        <button class="btn btn-buy">Acheter</button>
-        <button class="btn btn-offer">Faire une offre</button>
-        <button class="btn btn-chat">Chat</button>
+        <button class="btn btn-chat" onclick="openChat('Karim')">Chat</button>
       </div>
     </article>
   </section>
 </main>
 
+<!-- ✅ Chat Box -->
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">
+    <span id="chatWith">Chat</span>
+    <button onclick="closeChat()" style="background:none;border:none;color:white;cursor:pointer;">X</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Écrire un message..." />
+    <button onclick="sendMessage()">Envoyer</button>
+  </div>
+</div>
+
 <footer>
   <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
 </footer>
+
+<!-- ✅ JS -->
+<script>
+  // Wireframe toggle
+  document.getElementById("wireframe-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("wireframe");
+  });
+
+  // Chat system
+  let currentSeller = "";
+  const chatBox = document.getElementById("chatBox");
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput = document.getElementById("chatInput");
+  const chatWith = document.getElementById("chatWith");
+
+  function openChat(seller) {
+    currentSeller = seller;
+    chatWith.textContent = "Chat avec " + seller;
+    chatMessages.innerHTML = `<p><em>${seller} est en ligne...</em></p>`;
+    chatBox.style.display = "flex";
+  }
+
+  function closeChat() {
+    chatBox.style.display = "none";
+  }
+
+  function sendMessage() {
+    const msg = chatInput.value.trim();
+    if (msg === "") return;
+    chatMessages.innerHTML += `<p><strong>Vous:</strong> ${msg}</p>`;
+    chatInput.value = "";
+
+    // Réponse simulée du vendeur
+    setTimeout(() => {
+      chatMessages.innerHTML += `<p><strong>${currentSeller}:</strong> Merci pour votre message, je vous répondrai rapidement !</p>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 1000);
+  }
+</script>
 
 </body>
 </html>
