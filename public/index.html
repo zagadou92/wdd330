@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptoMentor – Suivez les cryptomonnaies en temps réel</title>
-  <meta name="description" content="CryptoMentor, votre guide expert pour suivre et comprendre les cryptomonnaies. Actualités, convertisseur, glossaire et conseils pour débutants." />
+  <title>CryptoMentor – Boutique</title>
+  <meta name="description" content="Découvrez nos produits et services liés aux cryptomonnaies sur la boutique CryptoMentor." />
 
   <!-- Feuille de style -->
   <link rel="stylesheet" href="styles/styles.css" />
@@ -16,7 +16,7 @@
 
 <header>
   <div class="container header-container">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <img src="images/pho1.jpg" alt="Logo CryptoMentor" />
       <span>CryptoMentor</span>
     </a>
@@ -30,76 +30,65 @@
         <li><a href="glossary.html">Glossaire</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="guide.html">Guide</a></li>
+        <li><a href="vente.html" class="active">Boutique</a></li>
       </ul>
     </nav>
-
-    <!-- ✅ BARRE DE RECHERCHE CRYPTO -->
-    <div class="searchbar">
-      <form id="crypto-search-form" role="search" aria-label="Recherche de cryptomonnaies" autocomplete="off">
-        <input id="crypto-search-input" type="search" placeholder="Rechercher une crypto (ex: bitcoin, eth)..." aria-label="Rechercher une crypto" />
-        <button type="submit" aria-label="Lancer la recherche">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <div id="crypto-search-results" class="search-results" role="listbox" aria-label="Résultats de recherche"></div>
-    </div>
-
-    <!-- Bouton Wireframe -->
-    <div class="wireframe-buttons">
-      <button id="wireframe-toggle" title="Wireframe"><i class="fas fa-border-all"></i></button>
-    </div>
   </div>
 </header>
 
-<main>
+<main class="container">
   <section class="hero">
-    <h1>Bienvenue sur CryptoMentor</h1>
-    <p>Suivez les cryptomonnaies, restez informé·e·s et apprenez les bases en toute simplicité.</p>
+    <h1>Nos Produits & Services</h1>
+    <p>Découvrez nos offres pour vous accompagner dans le monde des cryptomonnaies.</p>
   </section>
 
-  <section class="carousel-container">
-    <div class="carousel-slide">
-      <img src="images/pho1.jpg" alt="Image 1">
-      <img src="images/pho1.jpg" alt="Image 2">
-      <img src="images/pho1.jpg" alt="Image 3">
-      <img src="images/pho1.jpg" alt="Image 4">
-      <img src="images/pho1.jpg" alt="Image 5">
-    </div>
-  </section>
+  <section class="products-grid">
+    <!-- Produit 1 -->
+    <article class="product-card">
+      <img src="images/formation.jpg" alt="Formation crypto" />
+      <h2>Formation Débutants</h2>
+      <p>Apprenez les bases du Bitcoin, Ethereum et de la blockchain en 7 jours.</p>
+      <span class="price">49,99 €</span>
+      <a href="#" class="btn-highlight">Acheter</a>
+    </article>
 
-  <section class="features container">
-    <article>
-      <i class="fas fa-chart-line fa-3x"></i>
-      <h2>Marché en temps réel</h2>
-      <p>Suivez l'évolution des prix des cryptos en direct, avec des graphiques clairs et précis.</p>
+    <!-- Produit 2 -->
+    <article class="product-card">
+      <img src="images/analyse.jpg" alt="Analyse crypto" />
+      <h2>Analyse Marché Premium</h2>
+      <p>Accédez à nos analyses détaillées et prévisions du marché crypto.</p>
+      <span class="price">19,99 €/mois</span>
+      <a href="#" class="btn-highlight">S’abonner</a>
     </article>
-    <article>
-      <i class="fas fa-book fa-3x"></i>
-      <h2>Glossaire complet</h2>
-      <p>Comprenez tous les termes essentiels grâce à notre glossaire simple et accessible.</p>
+
+    <!-- Produit 3 -->
+    <article class="product-card">
+      <img src="images/wallet.jpg" alt="Portefeuille crypto" />
+      <h2>Portefeuille Sécurisé</h2>
+      <p>Stockez vos cryptomonnaies en toute sécurité avec notre wallet recommandé.</p>
+      <span class="price">89,00 €</span>
+      <a href="#" class="btn-highlight">Acheter</a>
     </article>
-    <article>
-      <i class="fas fa-lightbulb fa-3x"></i>
-      <h2>Conseils et guides</h2>
-      <p>Débutants ou avancés, trouvez des astuces et tutoriels adaptés à votre niveau.</p>
+
+    <!-- Produit 4 -->
+    <article class="product-card">
+      <img src="images/consulting.jpg" alt="Consulting crypto" />
+      <h2>Consulting Privé</h2>
+      <p>Une séance personnalisée avec un expert crypto pour vos investissements.</p>
+      <span class="price">99,00 €/heure</span>
+      <a href="#" class="btn-highlight">Réserver</a>
     </article>
   </section>
-
-  <div class="bottom-auth-buttons container">
-    <a href="inscription.html" class="btn-highlight">Inscription</a>
-    <a href="connexion.html" class="btn-small">Connexion</a>
-  </div>
 </main>
 
 <footer>
   <p>&copy; 2025 CryptoMentor. Tous droits réservés.</p>
   <nav>
-     
     <ul>
-    <li><a href="confidencialit.html">Politique de confidentialité</a></li> |
-    <li<a href="conditions-utilisation.html">Conditions d’utilisation</a></li> |
-    <a href="#">Contact</a> |
-    <a href="#">Support</a>
+      <li><a href="confidencialit.html">Politique de confidentialité</a></li> |
+      <li><a href="conditions-utilisation.html">Conditions d’utilisation</a></li> |
+      <a href="#">Contact</a> |
+      <a href="#">Support</a>
     </ul>
   </nav>
   <div class="social-links">
@@ -113,14 +102,5 @@
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/java.js"></script>
-<script>
-  // Toggle Wireframe
-  const wireframeBtn = document.getElementById('wireframe-toggle');
-  wireframeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('wireframe');
-  });
-</script>
-
 </body>
 </html>
